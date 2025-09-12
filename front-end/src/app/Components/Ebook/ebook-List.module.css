@@ -1,0 +1,33 @@
+.ebooks {
+    display: flex;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+.ebookCard {
+    width: 16rem;
+    height: 20rem;
+    border-radius: 0.5rem;
+    background-color: rgb(71, 71, 71);
+}
+
+.ebooks img {
+    border-radius: 10px 10px 0 0;
+}
+
+.description {
+    padding: 1rem;
+}
+
+.description h3 {
+    font-size: 14px;
+    color: rgb(202, 202, 202);
+}
+
+.description p {
+    margin-top: 0.4rem;
+    font-size: 10px;
+    color: rgb(104, 104, 104);
+}

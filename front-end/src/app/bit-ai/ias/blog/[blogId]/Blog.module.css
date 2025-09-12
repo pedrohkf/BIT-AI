@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    row-gap: 1.5rem;
+    background-color: rgb(22, 20, 36);
+    color: rgb(209, 209, 209);
+}
+
+.container h1 {
+    font-size: 32px;
+    color: rgb(224, 224, 224);
+}
+
+#catchyPhrase {
+    color: rgb(133, 133, 133);
+    font-size: 15px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.3rem;
+    background-color: antiquewhite;
+}
+
+.content p {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: poppins-regular;
+}
+
+.content img {
+    border-radius: 5px;
+}
