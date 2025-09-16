@@ -19,16 +19,14 @@ export type Blog = {
     user: string;
 }
 
-export default async function FetchBlogs() {
-    const idUser = await userGet()
+export default async function DeleteBlogs(blogId: string) {
+    const user = await userGet()
 
-    if (!idUser || !idUser._id) {
+    if (!user || !user._id) {
         throw new Error("User not found or user ID is undefined");
     }
 
-    const response = await axios.get(`${process.env.API_URL}/blogs/trash/${idUser._id}`)
-
-    const data = response.data as Blog[]
-
+    const response = await axios.delete(`${process.env.API_URL}/blogs/${blogId}`, { data: { userId: user._id } })
+    const data = response.data
     return data
 }
