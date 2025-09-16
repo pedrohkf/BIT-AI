@@ -52,7 +52,7 @@ router.get('/:userId', async (req, res) => {
 router.get('/:userId/trash', async (req, res) => {
     const { userId } = req.params;
     try {
-        const blog = await Blog.find({ userId });
+        const blog = await Blog.find({ userId, deleted: true });
 
         if (!blog) return res.status(404).send("Blog não encontrado")
 
@@ -60,6 +60,48 @@ router.get('/:userId/trash', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).send("Erro no servidor")
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const blog = await Blog.findByIdAndUpdate(
+            id,
+            { deleted: true, deletedAt: new Date() },
+            { new: true }
+        );
+
+        if (!blog) {
+            return res.status(404).send("Blog não encontrado");
+        }
+
+        res.json({ message: "Blog movido para lixeira", blog });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro no servidor");
+    }
+})
+
+router.delete('/:id/restore', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const blog = await Blog.findByIdAndUpdate(
+            id,
+            { deleted: false, deletedAt: null },
+            { new: true }
+        );
+
+        if (!blog) {
+            return res.status(404).send("Blog não encontrado");
+        }
+
+        res.json({ message: "Blog restaurado", blog });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro no servidor");
     }
 })
 
