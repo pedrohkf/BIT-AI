@@ -16,7 +16,7 @@ export default async function login(formData: FormData) {
     }
 
     try {
-        const response = await axios.post('https://bitai-back.vercel.app/auth/login', {
+        const response = await axios.post(`${process.env.API_URL}/auth/login`, {
             email,
             password
         });

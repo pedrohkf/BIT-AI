@@ -20,7 +20,7 @@ export default async function register(formData: FormData) {
 
     }
 
-    const response = await axios.post("https://bit-ai-back.vercel.app/auth/register", {
+    const response = await axios.post(`${process.env.API_URL}/auth/register`, {
         name,
         email,
         password

@@ -29,7 +29,7 @@ export type Ebook = {
 }
 
 export default async function FetchEbookById(ebookId: string): Promise<Ebook | null> {
-    const response = await axios.get(`https://bitai-back.vercel.app/ebooks/bit-ai/${ebookId}`)
+    const response = await axios.get(`${process.env.API_URL}/ebooks/bit-ai/${ebookId}`)
     const data = response.data as Ebook
     return data
 }

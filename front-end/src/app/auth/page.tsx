@@ -85,7 +85,8 @@ export default function Page() {
                             <motion.div className={styles.forms}
                                 initial={{ x: -420 }}
                                 animate={{ x: 0 }}
-                                transition={{ duration: 1.8, ease: [0.1, 0.6, 0.2, 1] }}>                                <RegisterForm onSwitch={() => setMode("login")} />
+                                transition={{ duration: 1.8, ease: [0.1, 0.6, 0.2, 1] }}>
+                                <RegisterForm onSwitch={() => setMode("login")} />
                             </motion.div>
 
                         </div>

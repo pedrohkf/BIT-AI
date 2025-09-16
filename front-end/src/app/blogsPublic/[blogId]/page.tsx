@@ -43,15 +43,22 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
-      <h1>{blog?.title}</h1>
-      <p id={styles.catchyPhrase}>{blog?.catchyPhrase}</p>
+      <div className={styles.content}>
+        <img src={blog?.img} alt="teste" />
+        <div className={styles.filter}></div>
+
+        <div className={styles.title}>
+          <h1>{blog?.title}</h1>
+          <p>{blog?.catchyPhrase}</p>
+        </div>
+      </div>
+
       <ul>
         <li>{blog?.writerName}</li>
         <li>{dateBlog}</li>
       </ul>
-      <div className={styles.content}>
+      <div className={styles.text}>
         <p>{blog?.introductoryText}</p>
-        <img src={blog?.img} alt="Imagem do blog" />
         <p>{blog?.complementTitle}</p>
         <p>{blog?.developmentText}</p>
         <p>{blog?.conclusion}</p>

@@ -26,7 +26,7 @@ export default async function FetchBlogs() {
         throw new Error("User not found or user ID is undefined");
     }
 
-    const response = await axios.get(`https://bitai-back.vercel.app/blogs/${idUser._id}`)
+    const response = await axios.get(`${process.env.API_URL}/blogs/${idUser._id}`)
 
     const data = response.data as Blog[]
 

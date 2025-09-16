@@ -34,7 +34,7 @@ export default function AddEbook() {
         e.preventDefault()
 
         try {
-            const response = await axios.post(`https://bitai-back.vercel.app/ia/groq/ebook`, { theme: message, userId });
+            const response = await axios.post(`${process.env.API_URL}ia/groq/ebook`, { theme: message, userId });
 
             const data = response.data;
             setPosts(data.response)

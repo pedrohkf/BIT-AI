@@ -34,7 +34,9 @@ export default function AddBlog() {
         e.preventDefault()
 
         try {
-            const response = await axios.post(`https://bitai-back.vercel.app/ia/groq/blog`, { theme: message, userId });
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/ia/groq/blog`, { theme: message, userId });
+
+            console.log(process.env.NEXT_PUBLIC_API_URL)
 
             const data = response.data;
             setPosts(data.response)

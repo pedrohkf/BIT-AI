@@ -8,7 +8,7 @@ export type IA = {
 }
 
 export default async function FetchIAs(): Promise<IA[]> {
-    const response = await axios.get('https://bitai-back.vercel.app/ias')
+    const response = await axios.get(`${process.env.API_URL}/ias`)
 
     const data = response.data as IA[]
 

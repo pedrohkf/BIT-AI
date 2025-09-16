@@ -49,6 +49,20 @@ router.get('/:userId', async (req, res) => {
     }
 })
 
+router.get('/:userId/trash', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const blog = await Blog.find({ userId });
+
+        if (!blog) return res.status(404).send("Blog não encontrado")
+
+        res.json(blog)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Erro no servidor")
+    }
+})
+
 router.get('/bit-ai/:blogId', async (req, res) => {
     try {
         const { blogId } = req.params;
