@@ -1,0 +1,92 @@
+.border {
+    width: 25.4rem;
+    height: 38.5rem;
+    background: linear-gradient(to right, #FFC779, #FF7575, #986BFF, #FF7575, #FFC779);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    padding-bottom: 0.2rem;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    animation: gradient-card 10s linear infinite;
+    background-size: 200%;
+}
+
+.border p {
+    color: #ffffff;
+    font-size: 17px;
+    padding-bottom: 0.5rem;
+}
+
+.titlePopular h2 {
+    text-align: center;
+    font-family: poppins-bold;
+    font-size: 38px;
+    padding-top: 2rem;
+    background: linear-gradient(to right, #FFCE7E, #FF7E7E, #B87EFF, #FF7E7E, #FFCE7E);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-card 30s linear infinite;
+}
+
+.titlePopular p {
+    padding-top: 0.3rem;
+    text-align: center;
+    color: #c9c9c9;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+    width: 25rem;
+    height: 35rem;
+    border-radius: 10px;
+    background-color: #1D1D1D;
+}
+
+.title h2 {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 38px;
+    color: #ffffff;
+}
+
+.title p {
+    padding-top: 0.3rem;
+    text-align: center;
+    color: #c9c9c9;
+}
+
+.pricePlan {
+    display: flex;
+    color: white;
+    align-items: end;
+    column-gap: 0.3rem;
+}
+
+.pricePlan p {
+    font-size: 20px;
+    font-family: poppins-semiBold;
+}
+
+.pricePlan h3 {
+    font-size: 38px;
+    font-family: poppins-semiBold;
+}
+
+.typePlan {
+    font-size: 20px;
+    font-family: poppins-semiBold;
+    color: #ffffff;
+}
+
+@keyframes gradient-card {
+    to {
+        background-position: 200%;
+    }
+}

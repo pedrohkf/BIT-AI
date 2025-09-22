@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: poppins-bold;
+  src: url(../../public/fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: poppins-medium;
+  src: url(../../public/fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: poppins-regular;
+  src: url(../../public/fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: poppins-semiBold;
+  src: url(../../public/fonts/Poppins-SemiBold.ttf);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: poppins-bold;
+}
+
+h4 {
+  font-family: poppins-semiBold;
+}
+
+p {
+  font-size: 15px;
+  font-family: poppins-medium;
+  letter-spacing: 1.3px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #A8A7A7;
+  cursor: pointer;
+}
+
+svg {
+  stroke: #A8A7A7;
+  stroke-width: 2;
+}
+
+svg:hover {
+  stroke: white;
+}
+
+@media (max-width: 455px) {
+  button {
+    width: 7.5rem;
+    height: 3rem;
+    font-size: 14px;
+  }
+}
