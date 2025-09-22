@@ -35,7 +35,7 @@ export default async function FetchEbooks() {
         throw new Error("User not found or user ID is undefined");
     }
 
-    const response = await axios.get(`${process.env.API_URL}/ebooks/${idUser._id}`)
+    const response = await axios.get(`https://bit-ai-back.vercel.app/ebooks/${idUser._id}`)
 
     const data = response.data as Ebook[]
 

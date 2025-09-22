@@ -26,7 +26,7 @@ export default async function DeleteBlogs(blogId: string) {
         throw new Error("User not found or user ID is undefined");
     }
 
-    const response = await axios.delete(`${process.env.API_URL}/blogs/${blogId}`, { data: { userId: user._id } })
+    const response = await axios.delete(`https://bit-ai-back.vercel.app/blogs/${blogId}`, { data: { userId: user._id } })
     const data = response.data
     return data
 }

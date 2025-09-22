@@ -16,7 +16,7 @@ export default async function login(formData: FormData) {
     }
 
     try {
-        const response = await axios.post(`${process.env.API_URL}/auth/login`, {
+        const response = await axios.post(`https://bit-ai-back.vercel.app/auth/login`, {
             email,
             password
         });
