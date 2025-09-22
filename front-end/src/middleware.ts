@@ -25,6 +25,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
 }
 
-export const cofig = {
-    matcher: ['/login/:path*', '/bit-ai/:path*'],
+export const config = {
+    matcher: ['/auth/:path*', '/bit-ai/:path*'],
 };

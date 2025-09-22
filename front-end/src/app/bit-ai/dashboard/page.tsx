@@ -1,4 +1,5 @@
 import React from 'react'
+export const dynamic = "force-dynamic";
 import SideMenu from '../../Components/Menu/SideMenu'
 import styles from "./dashboard.module.css"
 import AccountInfo from '@/app/Components/Account/Account-Info'
