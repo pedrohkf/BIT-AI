@@ -2,6 +2,7 @@
     display: flex;
     height: 100vh;
     overflow-y: hidden;
+    background-color: #141414;
 }
 
 .blogs {
@@ -18,11 +19,12 @@
     display: flex;
     flex-direction: column;
     width: 15rem;
-    height: 15rem;
-    background-color: #25263b;
+    height: 11rem;
+    background-color: #c9c9c92a;
     border-radius: 10px;
     justify-content: space-between;
     padding: 1.5rem;
+    border: 1px solid rgb(214, 214, 214);
 }
 
 .boxes svg {
