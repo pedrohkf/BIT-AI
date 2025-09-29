@@ -46,7 +46,7 @@ router.get('/:userId', async (req, res) => {
         res.json(blog)
     } catch (error) {
         console.log(error);
-        res.status(500).send("Erro no servidor")
+        res.status(500).send("Erro no servidor");
     }
 })
 
