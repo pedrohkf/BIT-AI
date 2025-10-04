@@ -5,7 +5,7 @@ const User = require('../models/User');
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
-    const { title, subTitle, complementTitle, catchyPhrase, introductoryText, developmentText, conclusion, img, writerName, createadAt, userId } = req.body;
+    const { title, subTitle, complementTitle, catchyPhrase, introductoryText, developmentText, conclusion, img, writerName, createdAt, userId } = req.body;
 
     try {
         const user = await User.findById({ _id: userId });
@@ -24,7 +24,7 @@ router.post('/add', async (req, res) => {
             conclusion,
             img,
             writerName,
-            createadAt,
+            createdAt,
             deleted: false,
             user: userId
         });
