@@ -23,7 +23,6 @@ export default async function page() {
                         </a>
                     </div>
                 ))}
-
             </div >
         </div>
     )

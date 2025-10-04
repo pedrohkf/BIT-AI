@@ -38,7 +38,7 @@ export default function AddBlog() {
 
             const data = response.data;
             setPosts(data.response)
-            router.push('edit');
+            router.push('./');
         } catch (error) {
             console.error("Erro ao criar blog", error)
         } finally {

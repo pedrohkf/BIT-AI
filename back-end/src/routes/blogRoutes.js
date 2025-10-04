@@ -25,6 +25,7 @@ router.post('/add', async (req, res) => {
             img,
             writerName,
             createadAt,
+            deleted,
             user: userId
         });
 
