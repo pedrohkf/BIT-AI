@@ -39,7 +39,7 @@ const generateAndSaveBlog = async (req, res) => {
             introductoryText,
             developmentText,
             conclusion,
-            img,
+            img: "",
             deleted: false,
         });
 
