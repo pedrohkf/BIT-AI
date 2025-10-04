@@ -43,7 +43,7 @@ router.get('/:userId', async (req, res) => {
         if (blogs.length === 0) return res.status(404).send("Blog não encontrado");
         if (!blogs) return res.status(404).send("Blog não encontrado")
 
-        res.json(blog)
+        res.json(blogs);
     } catch (error) {
         console.log(error);
         res.status(500).send("Erro no servidor");
