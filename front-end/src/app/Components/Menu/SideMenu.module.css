@@ -4,7 +4,7 @@
 }
 
 .menuBar {
-    background-color: #4F48FF;
+    background-color: var(--bg);
     margin: 2rem;
     display: none;
 }
@@ -25,10 +25,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 19rem;
+    width: 17rem;
     height: 100vh;
-    background-color: #000000c7;
-    color: #A8A7A7;
+    background-color: oklch(0.15 0.065 292);
+    color: var(--text-muted);
     transition: transform 0.5s ease-out, opacity;
     transform: translateX(0);
     opacity: 1;
@@ -49,7 +49,7 @@
 
 .menuLayout h2 {
     --border-right: 5px;
-    --text-stroke-color: rgba(255, 255, 255, 0.39);
+    --text-stroke-color: oklch(0.76 0.1 292);
     --animation-color: #6044ff;
     --fs-size: 1.6em;
     letter-spacing: 3px;
@@ -100,7 +100,8 @@
 }
 
 .menu a:hover {
-    color: white;
+    color: var(--text);
+    transition: 0.4s;
 }
 
 .menu li.active {
@@ -110,6 +111,7 @@
 
 .text {
     margin-left: 1rem;
+    color: var(--text);
 }
 
 @media (min-width: 510px) {

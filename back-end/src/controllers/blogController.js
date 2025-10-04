@@ -39,6 +39,7 @@ const generateAndSaveBlog = async (req, res) => {
             introductoryText,
             developmentText,
             conclusion,
+            img,
             deleted: false,
         });
 

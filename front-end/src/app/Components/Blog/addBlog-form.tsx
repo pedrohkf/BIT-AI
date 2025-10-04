@@ -22,6 +22,7 @@ export default function AddBlog() {
     const { posts, setPosts } = useBlogContext()
 
     useEffect(() => {
+        console.log("Componente montado");
         async function fetchUser() {
             const User = await userGet();
             setUserId(User?._id ?? null);
@@ -31,18 +32,21 @@ export default function AddBlog() {
     }, [])
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        console.log("Formulário enviado");
         e.preventDefault()
+
+        if (loading) return;
+        setLoading(true);
 
         try {
             const response = await axios.post(`https://bit-ai-orcin.vercel.app/ia/groq/blog`, { theme: message, userId });
 
             const data = response.data;
             setPosts(data.response)
-            router.push('./');
         } catch (error) {
             console.error("Erro ao criar blog", error)
         } finally {
-            setLoading(false)
+            router.push('./');
         }
 
     }

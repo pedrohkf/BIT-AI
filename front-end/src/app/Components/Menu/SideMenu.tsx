@@ -3,13 +3,9 @@ import styles from './SideMenu.module.css'
 
 import HelpIcon from "../Icons/Help"
 import DashboardIcon from "../Icons/Dashboard"
-import CalendarIcon from "../Icons/Calendar"
 import IAsIcon from "../Icons/Ias";
 import FavoritosIcon from "../Icons/Favorite";
-import MetricasIcon from "../Icons/Metrics";
-import PagesIcon from "../Icons/Pages";
 import LeadsIcon from "../Icons/Leads";
-import FunilIcon from "../Icons/Funel";
 import MenuIcon from "../Icons/menu";
 
 import Link from 'next/link';
@@ -64,7 +60,7 @@ export default function SideMenu() {
                             className={activeLink === item.to ? styles.active : ""}
                             onClick={handleClick}
                         >
-                            <Link href={"/bit-ai/" + item.to}>{item.icon}</Link>
+                            <Link href={"/bit-ai/" + item.to} className={styles.icon}>{item.icon}</Link>
                             <Link href={"/bit-ai/" + item.to} className={styles.text}>
                                 {item.label}
                             </Link>

@@ -2,7 +2,7 @@
     display: flex;
     height: 100vh;
     overflow-y: hidden;
-    background-color: #141414;
+    background-color: var(--bg-dark);
 }
 
 .blogs {
@@ -20,11 +20,11 @@
     flex-direction: column;
     width: 15rem;
     height: 11rem;
-    background-color: #c9c9c92a;
+    background-color: var(--bg-dark);
     border-radius: 10px;
     justify-content: space-between;
     padding: 1.5rem;
-    border: 1px solid rgb(214, 214, 214);
+    border: 1px solid oklch(0.4 0.13 292);
 }
 
 .boxes svg {
