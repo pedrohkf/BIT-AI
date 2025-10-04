@@ -111,7 +111,7 @@
 
 .text {
     margin-left: 1rem;
-    color: var(--text);
+    color: var(--text-muted);
 }
 
 @media (min-width: 510px) {

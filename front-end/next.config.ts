@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    domains: ['example.com'],
+    domains: ['images.pexels.com'],
   },
 };
 

@@ -5,7 +5,6 @@ import RedirectPageIcon from '@/app/Components/Icons/RedirectPage';
 import LinkIcon from '@/app/Components/Icons/Link';
 import Link from 'next/link';
 import DeleteBlogButton from "@/app/Components/Blog/DeleteBlogButton";
-import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -23,21 +22,22 @@ export default async function Blog() {
                 <div className={styles.blogs}>
                     {data.map((blogs) => (
                         <div key={blogs._id}>
-                            <div className={styles.boxes}>
-                                <p>{blogs.title}</p>
-                                <Image src={blogs.img} alt="" />
-                                <div className={styles.buttons}>
-                                    <a
-                                        href={`https://wa.me/?text=https://bit-ai.netlify.app/blogsPublic/${blogs._id}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <LinkIcon />
-                                    </a>
-                                    <Link href={`../../blogsPublic/${blogs._id}`}>
-                                        <RedirectPageIcon />
-                                    </Link>
-                                    <DeleteBlogButton blogId={blogs._id} />
+                            <div className={styles.boxes} style={{ backgroundImage: `url(${blogs.img})` }}>
+                                <div className={styles.opacity}>
+                                    <p>{blogs.title}</p>
+                                    <div className={styles.buttons}>
+                                        <a
+                                            href={`https://wa.me/?text=https://bit-ai.netlify.app/blogsPublic/${blogs._id}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <LinkIcon />
+                                        </a>
+                                        <Link href={`../../blogsPublic/${blogs._id}`}>
+                                            <RedirectPageIcon />
+                                        </Link>
+                                        <DeleteBlogButton blogId={blogs._id} />
+                                    </div>
                                 </div>
                             </div>
                         </div>

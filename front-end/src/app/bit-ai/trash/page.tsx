@@ -4,6 +4,8 @@ import React from 'react'
 import styles from "./page.module.css"
 import DeletedBlogs from '@/actions/blogsTrash-get'
 
+export const dynamic = "force-dynamic";
+
 export default async function page() {
     const data = await DeletedBlogs();
 
