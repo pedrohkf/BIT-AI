@@ -40,8 +40,7 @@ router.get('/:userId', async (req, res) => {
     try {
         const blogs = await Blog.find({ userId: userId, deleted: { $eq: false } });
 
-        if (blogs.length === 0) return res.status(404).send("Blog não encontrado");
-        if (!blogs) return res.status(404).send("Blog não encontrado")
+        if (!blogs) return res.status(204).send("Nenhum blog disponível.");
 
         res.json(blogs);
     } catch (error) {
