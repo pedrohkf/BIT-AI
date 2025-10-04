@@ -34,7 +34,7 @@ export default function AddBlog() {
         e.preventDefault()
 
         try {
-            const response = await axios.post(`https://bit-ai-back.vercel.app/ia/groq/blog`, { theme: message, userId });
+            const response = await axios.post(`https://bit-ai-orcin.vercel.app/ia/groq/blog`, { theme: message, userId });
 
             const data = response.data;
             setPosts(data.response)

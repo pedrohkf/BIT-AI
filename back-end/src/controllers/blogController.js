@@ -39,6 +39,7 @@ const generateAndSaveBlog = async (req, res) => {
             introductoryText,
             developmentText,
             conclusion,
+            deleted: false,
         });
 
         console.log("ID:", messageUser.userId)
