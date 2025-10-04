@@ -18,12 +18,9 @@ import { useEffect, useState } from 'react'
 const menuItems = [
     { to: "dashboard", label: "Dashboard", icon: <DashboardIcon /> },
     { to: "ias", label: "Todas as IA's", icon: <IAsIcon /> },
+    { to: "trash", label: "Lixeira", icon: <IAsIcon /> },
     { to: "favoritos", label: "Favoritos", icon: <FavoritosIcon /> },
-    { to: "metricas", label: "Métricas", icon: <MetricasIcon /> },
-    { to: "ladingPages", label: "Lading Pages", icon: <PagesIcon /> },
-    { to: "calendar", label: "Calendário", icon: <CalendarIcon /> },
     { to: "leads", label: "Leads", icon: <LeadsIcon /> },
-    { to: "funis", label: "Funil", icon: <FunilIcon /> },
     { to: "help", label: "Ajuda", icon: <HelpIcon /> },
 ];
 
