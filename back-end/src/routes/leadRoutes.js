@@ -5,7 +5,7 @@ const User = require('../models/User');
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
-    const { name, email, phone, source, createdAt, userId } = req.body;
+    const { name, email, phone, source, userId } = req.body;
 
     try {
         const user = await User.findById({ _id: userId });
@@ -19,8 +19,7 @@ router.post('/add', async (req, res) => {
             email,
             phone,
             source,
-            createdAt,
-            user: userId
+            userId,
         });
 
         await newLead.save();
