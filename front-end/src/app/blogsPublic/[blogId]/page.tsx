@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FetchBlogs from "@/actions/blog-get";
 
+import Modal from "../../Components/Modal/modal";
+
 export default function Page() {
   const params = useParams();
   const blogId = params.blogId as string;
@@ -43,6 +45,7 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
+      <Modal />
       <div className={styles.content}>
         <img src={blog?.img} alt="teste" />
         <div className={styles.filter}></div>
