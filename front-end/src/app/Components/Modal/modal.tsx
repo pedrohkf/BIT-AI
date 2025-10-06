@@ -1,9 +1,9 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import styles from "./modal.module.css";
 
 import Form from "./form";
 
-export default function page() {
+export default function Page() {
     const [isOpen, setIsOpen] = useState(true);
 
     function handleClose() {

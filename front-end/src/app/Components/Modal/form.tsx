@@ -1,12 +1,14 @@
 "use client"
 import Button from '@/app/Components/forms/button';
-import { useBlogContext } from '@/context/BlogContext';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
 import userGet from "@/actions/user-get";
 
 import styles from "./form.module.css"
+
+interface AddLeadProps {
+  onClose: () => void;
+}
 
 function FormButton({ loading }: { loading: boolean }) {
     return (
@@ -16,9 +18,7 @@ function FormButton({ loading }: { loading: boolean }) {
     );
 }
 
-export default function AddLead({ onClose }) {
-    const [isOpen, setIsOpen] = useState(true);
-
+export default function AddLead({ onClose }: AddLeadProps) {
     const [userId, setUserId] = useState<string | null>(null)
     const [name, setName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
@@ -42,8 +42,7 @@ export default function AddLead({ onClose }) {
         setLoading(true);
         try {
             const response = await axios.post(`https://bit-ai-orcin.vercel.app/lead/add`, { name, email, phone, source: "blog", userId });
-
-            const data = response.data;
+            return response
         } catch (error) {
             console.error("Erro ao enviar Lead", error)
         } finally {
