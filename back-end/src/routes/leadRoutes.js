@@ -57,5 +57,5 @@ router.get('/bit-ai/:leadId', async (req, res) => {
         res.status(500).send("Erro no servidor")
     }
 })
-s
+
 module.exports = router;
