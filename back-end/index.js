@@ -8,6 +8,7 @@ const categorieRoutes = require("./src/routes/categoriesRoutes");
 const blogsRoutes = require("./src/routes/blogRoutes");
 const ebooksRoutes = require("./src/routes/ebookRoutes");
 const iaBlogRoutes = require("./src/routes/iaMessageRoutes");
+const leadsRoutes = require("./src/routes/leadRoutes");
 
 require('dotenv').config();
 const app = express();
@@ -21,6 +22,7 @@ app.use('/ias', iaRoutes);
 app.use('/category', categorieRoutes);
 app.use('/blogs', blogsRoutes);
 app.use('/ebooks', ebooksRoutes);
+app.use('/lead', leadsRoutes);
 app.use('/ia', iaBlogRoutes); // acabei de mudar
 
 app.get("/", (req, res) => {
