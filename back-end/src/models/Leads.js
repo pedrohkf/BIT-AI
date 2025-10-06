@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const blogSchema = new mongoose.Schema({
+const leadSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -27,4 +27,4 @@ const blogSchema = new mongoose.Schema({
         required: true
     }
 })
-module.exports = mongoose.model('Blog', blogSchema)
+module.exports = mongoose.model('Lead', leadSchema)
