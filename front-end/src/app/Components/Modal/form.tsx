@@ -16,16 +16,14 @@ function FormButton({ loading }: { loading: boolean }) {
     );
 }
 
-export default function AddBlog() {
+export default function AddLead({ onClose }) {
     const [isOpen, setIsOpen] = useState(true);
 
-    const router = useRouter();
     const [userId, setUserId] = useState<string | null>(null)
     const [name, setName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [phone, setPhone] = useState<string>('')
     const [loading, setLoading] = useState(false);
-    const { posts, setPosts } = useBlogContext()
 
     useEffect(() => {
         async function fetchUser() {
@@ -42,24 +40,17 @@ export default function AddBlog() {
 
         if (loading) return;
         setLoading(true);
-
         try {
-            const response = await axios.post(`https://bit-ai-orcin.vercel.app/lead`, { name, email, phone, source: "blog", userId });
+            const response = await axios.post(`https://bit-ai-orcin.vercel.app/lead/add`, { name, email, phone, source: "blog", userId });
 
             const data = response.data;
-            setPosts(data.response)
         } catch (error) {
             console.error("Erro ao enviar Lead", error)
         } finally {
             setLoading(false);
-            setIsOpen(false);
+            onClose();
         }
-
     }
-
-    useEffect(() => {
-        console.log(posts);
-    }, [posts]);
 
     return (
         <>
@@ -76,7 +67,7 @@ export default function AddBlog() {
                 <FormButton loading={loading} />
                 <p>     OU      </p>
 
-                <button onClick={() => setIsOpen(false)}>não tenho interesse</button>
+                <button onClick={onClose}>não tenho interesse</button>
             </form>
         </>
     )

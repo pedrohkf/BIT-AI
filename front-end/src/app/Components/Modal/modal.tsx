@@ -6,6 +6,10 @@ import Form from "./form";
 export default function page() {
     const [isOpen, setIsOpen] = useState(true);
 
+    function handleClose() {
+        setIsOpen(false);
+    }
+
     return (
         isOpen ? (
             <div className={styles.container}>
@@ -18,7 +22,7 @@ export default function page() {
                         </div>
                     </div>
                     <p>Receba as melhores noticias por email</p>
-                    <Form />
+                    <Form onClose={handleClose} />
                 </div>
             </div>
         ) : (
