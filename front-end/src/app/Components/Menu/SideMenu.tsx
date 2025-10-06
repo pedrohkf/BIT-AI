@@ -4,19 +4,22 @@ import styles from './SideMenu.module.css'
 import HelpIcon from "../Icons/Help"
 import DashboardIcon from "../Icons/Dashboard"
 import IAsIcon from "../Icons/Ias";
-import FavoritosIcon from "../Icons/Favorite";
+import TrashIcon from "../Icons/Trash";
 import LeadsIcon from "../Icons/Leads";
 import MenuIcon from "../Icons/menu";
+import Metrics from '../Icons/Metrics';
+import Exit from '../Icons/Exit';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react'
 
+
 const menuItems = [
     { to: "dashboard", label: "Dashboard", icon: <DashboardIcon /> },
     { to: "ias", label: "Todas as IA's", icon: <IAsIcon /> },
-    { to: "trash", label: "Lixeira", icon: <IAsIcon /> },
-    { to: "favoritos", label: "Favoritos", icon: <FavoritosIcon /> },
+    { to: "metricas", label: "Métricas", icon: <Metrics /> },
     { to: "leads", label: "Leads", icon: <LeadsIcon /> },
+    { to: "lixeira", label: "Lixeira", icon: <TrashIcon /> },
     { to: "help", label: "Ajuda", icon: <HelpIcon /> },
 ];
 
@@ -67,7 +70,8 @@ export default function SideMenu() {
                         </li>
                     ))}
                 </ul>
-                <ul>
+                <ul className={styles.exit}>
+                    <Exit />
                     <li>Sair</li>
                 </ul>
             </div>

@@ -1,11 +1,12 @@
 .container {
     display: flex;
     height: 100vh;
+    padding: 2rem;
 }
 
 .menuBar {
     background-color: var(--bg);
-    margin: 2rem;
+    margin: 1rem;
     display: none;
 }
 
@@ -26,13 +27,15 @@
     flex-direction: column;
     align-items: center;
     width: 17rem;
-    height: 100vh;
+    height: 92vh;
     background-color: oklch(0.15 0.065 292);
     color: var(--text-muted);
     transition: transform 0.5s ease-out, opacity;
     transform: translateX(0);
     opacity: 1;
+    border-radius: 15px;
 }
+
 
 .menuLayoutDesactived {
     opacity: 1;
@@ -42,7 +45,7 @@
 }
 
 .menuLayout h2 {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     border: none;
     cursor: pointer;
 }
@@ -86,7 +89,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
-    row-gap: 1.1rem;
+    row-gap: 0.3rem;
 }
 
 .menu li {
@@ -97,11 +100,13 @@
     border-radius: 3px;
     padding-left: 0.5rem;
     text-decoration: none;
+    fill: var(--text-muted);
 }
 
 .menu a:hover {
     color: var(--text);
     transition: 0.4s;
+    fill: var(--text);
 }
 
 .menu li.active {
@@ -112,6 +117,17 @@
 .text {
     margin-left: 1rem;
     color: var(--text-muted);
+}
+
+.exit {
+    width: 100%;
+    padding: 3.2rem;
+    display: flex;
+    fill: var(--text-muted);
+}
+
+.exit li {
+    margin-left: 1rem;
 }
 
 @media (min-width: 510px) {
