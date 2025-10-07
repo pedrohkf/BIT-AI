@@ -30,7 +30,7 @@ const blogSchema = new mongoose.Schema({
         required: true
     },
     img: {
-        type: String,
+        type: [String],
         default: "https://images.pexels.com/photos/1055068/pexels-photo-1055068.jpeg",
         required: true
     },

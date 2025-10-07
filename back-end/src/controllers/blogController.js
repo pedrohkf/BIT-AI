@@ -1,4 +1,5 @@
 const blogGenerate = require("../services/blogGenerate")
+const imageGenerate = require("../services/imageGenerate")
 const createBlog = require("../services/createBlog")
 
 const generateAndSaveBlog = async (req, res) => {
@@ -12,6 +13,7 @@ const generateAndSaveBlog = async (req, res) => {
         }
 
         const [
+            img,
             title,
             subTitle,
             complementTitle,
@@ -20,6 +22,7 @@ const generateAndSaveBlog = async (req, res) => {
             developmentText,
             conclusion
         ] = await Promise.all([
+            imageGenerate.generateImage(messageUser.theme),
             blogGenerate.generateTitle(messageUser.theme),
             blogGenerate.generateSubTitle(messageUser.theme),
             blogGenerate.generateComplementTitle(messageUser.theme),
@@ -39,11 +42,9 @@ const generateAndSaveBlog = async (req, res) => {
             introductoryText,
             developmentText,
             conclusion,
-            img: "",
+            img,
             deleted: false,
         });
-
-        console.log("ID:", messageUser.userId)
 
         res.status(201).json({
             message: "Blog criado com sucesso!",
