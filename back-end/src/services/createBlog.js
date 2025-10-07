@@ -1,10 +1,10 @@
 const Blog = require("../models/Blogs");
 
 const addBlog = async (userId, { title,
-    subTitle, complementTitle, catchyPhrase, introductoryText, developmentText, conclusion,
+    subTitle, complementTitle, catchyPhrase, introductoryText, developmentText, conclusion, img
 }) => {
     const blog = new Blog({
-        title, subTitle, complementTitle, catchyPhrase, introductoryText, developmentText, conclusion, userId
+        title, subTitle, complementTitle, catchyPhrase, introductoryText, developmentText, conclusion, img, userId
     })
 
     const savedBlog = await blog.save();

@@ -31,7 +31,6 @@ const blogSchema = new mongoose.Schema({
     },
     img: {
         type: [String],
-        default: "https://images.pexels.com/photos/1055068/pexels-photo-1055068.jpeg",
         required: true
     },
     writerName: {
