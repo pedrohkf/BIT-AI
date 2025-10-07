@@ -15,7 +15,7 @@ const generateImage = async (theme) => {
 
     const photos = data.photos
     .slice(0, 10)
-    .map(photo => photo.src.medium)
+    .map(photo => photo.src.original)
 
     return photos;
 }
