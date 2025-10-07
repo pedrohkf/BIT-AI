@@ -14,12 +14,12 @@ export type Blog = {
     subText: string;
     complementText: string;
     conclusion: string;
-    img: string;
+    img: string[];
     user: string;
 }
 
 export default async function FetchBlogsById(blogId: string): Promise<Blog | null> {
-    const response = await axios.get(`https://bit-ai-back.vercel.app/blogs/bit-ai/${blogId}`)
+    const response = await axios.get(`https://bit-ai-orcin.vercel.app/blogs/bit-ai/${blogId}`)
     const data = response.data as Blog
     return data
 }

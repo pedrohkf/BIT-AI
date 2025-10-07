@@ -18,6 +18,9 @@ export default function Page() {
   useEffect(() => {
     async function fetchBlog() {
       const data = await FetchBlogsById(blogId);
+
+      console.log(blog?.img);
+
       setBlog(data);
 
       const date = data?.createadAt ? new Date(data.createadAt) : null;
@@ -47,7 +50,14 @@ export default function Page() {
     <div className={styles.container}>
       <Modal />
       <div className={styles.content}>
-        <img src={blog?.img} alt="teste" />
+        {blog?.img?.length ? (
+          <img
+            src={blog.img[5]}
+            alt="Imagem do blog"
+          />
+        ) : (
+          <p>Carregando imagem...</p>
+        )}
         <div className={styles.filter}></div>
 
         <div className={styles.title}>
@@ -76,7 +86,9 @@ export default function Page() {
                   <p>{dateBlog}</p>
                 </div>
                 <div>
-                  <img src={blog.img} alt="" />
+                  {blog?.img?.map((link, index) => (
+                    <img key={index} src={link} alt={`Imagem ${index + 1}`} style={{ width: "150px", height: "150px", objectFit: "cover" }} />
+                  ))}
                 </div>
               </div>
               <hr />

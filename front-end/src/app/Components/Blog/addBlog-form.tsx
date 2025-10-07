@@ -32,20 +32,7 @@ export default function AddBlog() {
     const [userId, setUserId] = useState<string | null>(null)
     const [message, setMessage] = useState<string>('')
     const [loading, setLoading] = useState(false);
-    const [images, setImages] = useState<PexelsPhoto[]>([]);
     const { posts, setPosts } = useBlogContext()
-
-    useEffect(() => {
-        if (!message) return;
-        async function fetchImages() {
-            const response = await fetch(`https://api.pexels.com/v1/search?query=${message}&per_page=18`, {
-                headers: { Authorization: "OeJIiZnvMegLrAzPrVmRGgchrERESCAYdKsuYQ5bYKAn2ZOpMOAoFo5h" }
-            });
-            const data = await response.json();
-            setImages(data.photos);
-        }
-        fetchImages();
-    }, [message]);
 
 
     useEffect(() => {
@@ -88,16 +75,6 @@ export default function AddBlog() {
                 <input type="text" name="text" placeholder="text" value={message} onChange={(e) => setMessage(e.target.value)} />
                 <FormButton loading={loading} />
             </form>
-
-            <div className={styles.grid}>
-                {images.map(photo => (
-                    <img
-                        key={photo.id}
-                        src={photo.src.medium}
-                        alt={photo.photographer}
-                    />
-                ))}
-            </div>
         </div>
     )
 }
