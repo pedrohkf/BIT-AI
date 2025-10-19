@@ -51,29 +51,29 @@ export default function Page() {
       <Modal />
       <div className={styles.content}>
         {blog?.img?.length ? (
-          <img
-            src={blog.img[5]}
-            alt="Imagem do blog"
-          />
+          <div className={styles.banner} style={{ backgroundImage: `url(${blog.img[5]})` }}>
+            <div className={styles.title}>
+              <h1>{blog?.title}</h1>
+              <p>{blog?.catchyPhrase}</p>
+            </div>
+          </div>
         ) : (
           <p>Carregando imagem...</p>
         )}
         <div className={styles.filter}></div>
 
-        <div className={styles.title}>
-          <h1>{blog?.title}</h1>
-          <p>{blog?.catchyPhrase}</p>
-        </div>
       </div>
-
-      <ul>
+      <div className={styles.text}>
         <li>{blog?.writerName}</li>
         <li>{dateBlog}</li>
-      </ul>
-      <div className={styles.text}>
+        <p>Introdução</p>
         <p>{blog?.introductoryText}</p>
+        <img src={blog?.img[1]} alt="" />
         <p>{blog?.complementTitle}</p>
+        <img src={blog?.img[2]} alt="" />
         <p>{blog?.developmentText}</p>
+        <img src={blog?.img[3]} alt="" />
+        <p>Conclusão</p>
         <p>{blog?.conclusion}</p>
       </div>
       <div className={styles.allBlogs}>
@@ -86,9 +86,7 @@ export default function Page() {
                   <p>{dateBlog}</p>
                 </div>
                 <div>
-                  {blog?.img?.map((link, index) => (
-                    <img key={index} src={link} alt={`Imagem ${index + 1}`} style={{ width: "150px", height: "150px", objectFit: "cover" }} />
-                  ))}
+                  <img src={blog.img[5]} alt={`Imagem`} style={{ width: "150px", height: "150px", objectFit: "cover" }} />
                 </div>
               </div>
               <hr />

@@ -22,7 +22,7 @@ export default async function Blog() {
                 <div className={styles.blogs}>
                     {data.map((blogs) => (
                         <div key={blogs._id}>
-                            <div className={styles.boxes} style={{ backgroundImage: `url(${blogs.img})` }}>
+                            <div className={styles.boxes} style={{ backgroundImage: `url(${blogs.img[0]})` }}>
                                 <div className={styles.opacity}>
                                     <p>{blogs.title}</p>
                                     <div className={styles.buttons}>

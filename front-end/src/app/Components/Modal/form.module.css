@@ -1,26 +1,44 @@
-
-.forms{
-    width: 100%;
-    height: 100%;
+.forms {
+    border-radius: 16px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    border-radius: 0 0 20px 20px;
-    color: var(--text-muted);
     align-items: center;
+    gap: 1rem;
 }
 
 .inputs{
-    width: 72%; 
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
 }
 
-.inputs input{
+.inputs input {
     width: 100%;
-    height: 1.8rem;
-    border-radius: 3px;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
+    height: 2.5rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
 }
 
-.forms p {
-    margin-top: 0.5rme;
+.inputs p {
+    margin: 0;
+    padding: 0;
+    text-align: start;
+}
+
+.inputs input:focus {
+    border-color: #7521fc;
+    outline: none;
+}
+
+.botaoSecundario{
+    width: 60%;
+    height: 2.5rem;
+    border-radius: 40px;
+    background-color: white;
+    color: black;
+    font-weight: 500;
 }

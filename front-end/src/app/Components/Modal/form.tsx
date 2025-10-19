@@ -11,11 +11,11 @@ interface AddLeadProps {
 }
 
 function FormButton({ loading }: { loading: boolean }) {
-    return (
-        <Button disabled={loading}>
-            {loading ? "Criando..." : "Criar"}
-        </Button>
-    );
+  return (
+    <Button disabled={loading} className={styles.botaoSecundario}>
+      {loading ? "Enviando..." : "Enviar"}
+    </Button>
+  );
 }
 
 export default function AddLead({ onClose }: AddLeadProps) {
@@ -56,17 +56,21 @@ export default function AddLead({ onClose }: AddLeadProps) {
             <form onSubmit={handleSubmit} className={styles.forms}>
 
                 <div className={styles.inputs}>
-                    <p>Nome</p>
-                    <input type="text" placeholder="Digite seu nome" value={name} onChange={(e) => setName(e.target.value)} />
-                    <p>Email</p>
-                    <input type="text" placeholder="Digite seu email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <p>Telefone</p>
-                    <input type="text" placeholder="Digite seu telefone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    <div>
+                        <p>Nome</p>
+                        <input type="text" placeholder="Digite seu nome" value={name} onChange={(e) => setName(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Email</p>
+                        <input type="text" placeholder="Digite seu email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Telefone</p>
+                        <input type="text" placeholder="Digite seu telefone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    </div>
                 </div>
                 <FormButton loading={loading} />
-                <p>     OU      </p>
-
-                <button onClick={onClose}>não tenho interesse</button>
+                <button onClick={onClose}>Não tenho interesse</button>
             </form>
         </>
     )
