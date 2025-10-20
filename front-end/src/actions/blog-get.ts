@@ -15,7 +15,7 @@ export type Blog = {
     subText: string;
     complementText: string;
     conclusion: string;
-    img: string;
+    img: string[];
     user: string;
 }
 

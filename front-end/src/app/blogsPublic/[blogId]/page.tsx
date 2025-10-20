@@ -19,8 +19,6 @@ export default function Page() {
     async function fetchBlog() {
       const data = await FetchBlogsById(blogId);
 
-      console.log(blog?.img);
-
       setBlog(data);
 
       const date = data?.createadAt ? new Date(data.createadAt) : null;

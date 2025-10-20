@@ -30,7 +30,7 @@ export default function Page() {
       </ul>
       <div className={styles.content}>
         <p>{blog?.introductoryText}</p>
-        <img src={blog?.img} alt="Imagem do blog" />
+        <img src={blog?.img[0]} alt="Imagem do blog" />
         <p>{blog?.complementTitle}</p>
         <p>{blog?.developmentText}</p>
         <p>{blog?.conclusion}</p>

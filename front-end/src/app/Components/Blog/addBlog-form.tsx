@@ -8,17 +8,6 @@ import userGet from "@/actions/user-get";
 
 import styles from "./addBlog-form.module.css"
 
-type PexelsPhoto = {
-    id: number;
-    src: {
-        original: string;
-        medium: string;
-        small?: string;
-    };
-    photographer: string;
-};
-
-
 function FormButton({ loading }: { loading: boolean }) {
     return (
         <Button disabled={loading}>
