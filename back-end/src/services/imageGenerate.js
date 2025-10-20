@@ -7,7 +7,7 @@ const generateImage = async (theme) => {
         throw new Error("Tema inválido.")
     }
 
-    const response = await fetch(`https://api.pexels.com/v1/search?query=${theme}&per_page=18&size=large`, {
+    const response = await fetch(`https://api.pexels.com/v1/search?query=${theme}&per_page=18&size=large&locale=pt-BR`, {
         headers: { Authorization: process.env.API_PEXELS }
     })
 
