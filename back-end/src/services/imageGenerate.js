@@ -7,15 +7,15 @@ const generateImage = async (theme) => {
         throw new Error("Tema inválido.")
     }
 
-    const response = await fetch(`https://api.pexels.com/v1/search?query=${theme}&per_page=18`, {
+    const response = await fetch(`https://api.pexels.com/v1/search?query=${theme}&per_page=18&size=large`, {
         headers: { Authorization: process.env.API_PEXELS }
     })
 
-    const data =  await response.json();
+    const data = await response.json();
 
     const photos = data.photos
-    .slice(0, 10)
-    .map(photo => photo.src.original)
+        .slice(0, 10)
+        .map(photo => photo.src.original)
 
     return photos;
 }
