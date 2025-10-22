@@ -75,7 +75,8 @@ export default function Page() {
         <p>{blog?.conclusion}</p>
       </div>
       <div className={styles.allBlogs}>
-        {blogsUser.map((blog) => (
+        <h5>Recomendados para você</h5>
+        {blogsUser.slice(0, 4).map((blog) => (
           <a key={blog._id} href={blog._id} className={styles.link}>
             <div className={styles.blogUserSection}>
               <div className={styles.blogUserBoxes}>
@@ -84,14 +85,17 @@ export default function Page() {
                   <p>{dateBlog}</p>
                 </div>
                 <div>
-                  <img src={blog.img[5]} alt={`Imagem`} style={{ width: "150px", height: "150px", objectFit: "cover" }} />
+                  <img
+                    src={blog.img[5]}
+                  />
                 </div>
               </div>
               <hr />
             </div>
           </a>
         ))}
+
       </div>
-    </div>
+    </div >
   )
 }
