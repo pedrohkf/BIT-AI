@@ -106,7 +106,7 @@ router.delete('/:id/restore', async (req, res) => {
     }
 })
 
-router.get('/bit-ai/:blogId', async (req, res) => {
+router.get('/get/:blogId', async (req, res) => {
     try {
         const { blogId } = req.params;
         const blog = await Blog.findById(blogId);
@@ -119,5 +119,25 @@ router.get('/bit-ai/:blogId', async (req, res) => {
         res.status(500).send("Erro no servidor")
     }
 })
+
+router.put("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  const updateData = req.body;
+
+  try {
+    const blog = await Blog.findById(id);
+
+    if (!blog) {
+      return res.status(404).json({ error: "Blog não encontrado" });
+    }
+
+    const updatedBlog = await Blog.findByIdAndUpdate(id, updateData, { new: true });
+
+    res.status(200).json(updatedBlog);
+  } catch (error) {
+    console.error("Erro ao atualizar:", error);
+    res.status(500).json({ error: "Erro interno ao atualizar o blog" });
+  }
+});
 
 module.exports = router;
