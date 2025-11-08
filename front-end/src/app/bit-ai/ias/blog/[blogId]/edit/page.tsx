@@ -4,22 +4,30 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import styles from "./edit.module.css";
 import userGet from "@/actions/user-get";
+import Image from "next/image";
 
 interface Blog {
-  title: String,
-  subTitle: String,
-  complementTitle: String,
-  catchyPhrase: String,
-  introductoryText: String,
-  developmentText: String,
-  conclusion: String,
-  img: [String],
-  writerName: String,
+  title: string,
+  subTitle: string,
+  complementTitle: string,
+  catchyPhrase: string,
+  introductoryText: string,
+  developmentText: string,
+  conclusion: string,
+  img: [string],
+  writerName: string,
   createdAt: Date,
-  deleted: Boolean,
-  deletedAt: String,
-  userId: String,
+  deleted: boolean,
+  deletedAt: string,
+  userId: string,
 }
+
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+}
+
 
 export default function EditPage() {
   const router = useRouter();
@@ -34,13 +42,15 @@ export default function EditPage() {
   const [developmentText, setDevelopmentText] = useState("");
   const [conclusion, setConclusion] = useState("");
   const [img, setImg] = useState<string[]>([]);
-  const [idUser, setIdUser] = useState<any>(null);
+
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     async function fetchUser() {
-      const user = await userGet();
+      const userData = await userGet();
       console.log("USER ID" + user?._id)
-      setIdUser(user?._id);
+
+      setUser(userData ?? null);
     }
     fetchUser();
   }, []);
@@ -49,7 +59,6 @@ export default function EditPage() {
   useEffect(() => {
     console.log("BLOGS ID " + blogId)
     if (!blogId) return;
-
 
     async function fetchBlog() {
       const res = await fetch(`https://bit-ai-orcin.vercel.app/blogs/get/${blogId}`);
@@ -73,6 +82,26 @@ export default function EditPage() {
   async function handleSave() {
     if (!blog) return;
 
+    if (!title.trim()) {
+      alert("O título não pode estar vazio!");
+      return;
+    }
+
+    if (!catchyPhrase.trim()) {
+      alert("A frase de impacto é obrigatória!");
+      return;
+    }
+
+    if (!introductoryText.trim() || !developmentText.trim() || !conclusion.trim()) {
+      alert("O artigo precisa ter pelo menos um texto preenchido!");
+      return;
+    }
+
+    if (img.length === 0 || !img[0].trim()) {
+      alert("Adicione pelo menos uma imagem de capa!");
+      return;
+    }
+
     const updated = {
       title,
       subTitle,
@@ -85,7 +114,7 @@ export default function EditPage() {
 
 
     try {
-      const res = await fetch(`https://pizza-hub-lime.vercel.app/blogs/update/${blogId}`, {
+      const res = await fetch(`https://bit-ai-orcin.vercel.app/blogs/update/${blogId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updated),
@@ -145,7 +174,7 @@ export default function EditPage() {
             <h1>{title || "Título do Post"}</h1>
             {subTitle && <h2 className={styles.subTitle}>{subTitle}</h2>}
             <p className={styles.authorInfo}>
-              Por {blog?.writerName || "Autor desconhecido"} •{" "}
+              Por {user?.name || "Autor desconhecido"} •{" "}
               {blog?.createdAt
                 ? new Date(blog.createdAt).toLocaleDateString("pt-BR")
                 : "Data não disponível"}
@@ -156,7 +185,7 @@ export default function EditPage() {
         {/* IMAGEM DE CAPA */}
         {img.length > 0 && (
           <div className={styles.bannerWrapper}>
-            <img src={img[0]} alt="Imagem de capa" className={styles.banner} />
+            <Image src={img[0]} alt="Imagem de capa" className={styles.banner} />
           </div>
         )}
 
@@ -185,17 +214,12 @@ export default function EditPage() {
             <div className={styles.galleryGrid}>
               {img.slice(1).map((url, i) => (
                 <div className={styles.galleryItem} key={i}>
-                  <img src={url} alt={`Imagem ${i}`} />
+                  <Image src={url} alt={`Imagem ${i}`} />
                 </div>
               ))}
             </div>
           </section>
         )}
-
-        {/* REDES DO AUTOR */}
-        <section id="contato" className={styles.contato}>
-          <h2>Redes do Autor</h2>
-        </section>
       </section>
     </div >
   );
