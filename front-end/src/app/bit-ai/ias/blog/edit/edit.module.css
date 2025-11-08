@@ -1,8 +1,0 @@
-.form textarea{
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    width: 25rem;
-    height: 5rem;
-    border: 1px solid black;
-}
