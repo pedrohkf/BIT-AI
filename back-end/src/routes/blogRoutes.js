@@ -111,6 +111,7 @@ router.get('/get/:blogId', async (req, res) => {
         const { blogId } = req.params;
         const blog = await Blog.findById(blogId);
 
+
         if (!blog) return res.status(404).send("Blog não encontrado")
 
         res.json(blog)
@@ -126,18 +127,21 @@ router.put("/update/:id", async (req, res) => {
 
   try {
     const blog = await Blog.findById(id);
-
     if (!blog) {
       return res.status(404).json({ error: "Blog não encontrado" });
     }
 
-    const updatedBlog = await Blog.findByIdAndUpdate(id, updateData);
+    const updatedBlog = await Blog.findByIdAndUpdate(id, updateData, {
+      new: true,
+      runValidators: true,
+    });
 
-    res.status(200).json(updatedBlog);
+    res.status(200).json({ message: "Blog atualizado com sucesso", updatedBlog });
   } catch (error) {
     console.error("Erro ao atualizar:", error);
     res.status(500).json({ error: "Erro interno ao atualizar o blog" });
   }
 });
+
 
 module.exports = router;

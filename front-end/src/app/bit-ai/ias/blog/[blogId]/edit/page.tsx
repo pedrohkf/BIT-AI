@@ -81,7 +81,6 @@ export default function EditPage() {
       developmentText,
       conclusion,
       img,
-      userId: idUser?._id,
     };
 
 
