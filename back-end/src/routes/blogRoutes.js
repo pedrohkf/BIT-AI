@@ -131,7 +131,7 @@ router.put("/update/:id", async (req, res) => {
       return res.status(404).json({ error: "Blog não encontrado" });
     }
 
-    const updatedBlog = await Blog.findByIdAndUpdate(id, updateData, { new: true });
+    const updatedBlog = await Blog.findByIdAndUpdate(id, updateData);
 
     res.status(200).json(updatedBlog);
   } catch (error) {

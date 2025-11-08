@@ -52,7 +52,7 @@ export default function EditPage() {
 
 
     async function fetchBlog() {
-      const res = await fetch(`https://bit-ai-orcin.vercel.app/blogs/bit-ai/${blogId}`);
+      const res = await fetch(`https://bit-ai-orcin.vercel.app/blogs/get/${blogId}`);
       const data = await res.json();
 
       console.log("Pizzaria carregada do backend:", data);
