@@ -185,7 +185,10 @@ export default function EditPage() {
         {/* IMAGEM DE CAPA */}
         {img.length > 0 && (
           <div className={styles.bannerWrapper}>
-            <Image src={img[0]} alt="Imagem de capa" className={styles.banner} />
+            <Image src={img[0]} alt="Imagem de capa"
+              className={styles.banner}
+              width={600}
+              height={400} />
           </div>
         )}
 
@@ -214,7 +217,8 @@ export default function EditPage() {
             <div className={styles.galleryGrid}>
               {img.slice(1).map((url, i) => (
                 <div className={styles.galleryItem} key={i}>
-                  <Image src={url} alt={`Imagem ${i}`} />
+                  <Image src={url} alt={`Imagem ${i}`} width={600}
+                    height={400} />
                 </div>
               ))}
             </div>

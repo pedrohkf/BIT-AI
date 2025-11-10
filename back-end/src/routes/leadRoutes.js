@@ -34,6 +34,7 @@ router.get('/:userId', async (req, res) => {
     try {
         const Leads = await Lead.find({ userId: userId });
 
+
         if (!Leads) return res.status(204).send("Nenhum Lead disponível.");
 
         res.json(Leads);
@@ -45,16 +46,17 @@ router.get('/:userId', async (req, res) => {
 
 router.get('/bit-ai/:leadId', async (req, res) => {
     try {
-        const { LeadId } = req.params;
-        const Lead = await Lead.findById(LeadId);
+        const { leadId } = req.params;
+        const lead = await Lead.findById(leadId);
 
-        if (!Lead) return res.status(404).send("Lead não encontrado")
+        if (!lead) return res.status(404).send("Lead não encontrado");
 
-        res.json(Lead)
+        res.json(lead);
     } catch (error) {
-        console.log(error);
-        res.status(500).send("Erro no servidor")
+        console.error(error);
+        res.status(500).send("Erro no servidor");
     }
-})
+});
+
 
 module.exports = router;

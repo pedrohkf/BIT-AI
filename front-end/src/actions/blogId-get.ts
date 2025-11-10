@@ -19,7 +19,7 @@ export type Blog = {
 }
 
 export default async function FetchBlogsById(blogId: string): Promise<Blog | null> {
-    const response = await axios.get(`https://bit-ai-orcin.vercel.app/blogs/bit-ai/${blogId}`)
+    const response = await axios.get(`https://bit-ai-orcin.vercel.app/blogs/get/${blogId}`)
     const data = response.data as Blog
     return data
 }
