@@ -4,9 +4,22 @@ import { useEffect, useState } from "react";
 import LeadsFilter from "./LeadsFilter";
 import LeadsTable from "./TableLeads";
 
-export default function LeadsPage({ user }) {
-    const [leads, setLeads] = useState([]);
-    const [filteredLeads, setFilteredLeads] = useState([]);
+import { Lead } from "@/types/lead";
+
+interface User {
+    _id: string;
+    name: string;
+    email: string;
+}
+
+interface LeadsPageProps {
+    user: User | undefined;
+}
+
+export default function LeadsPage({ user }: LeadsPageProps) {
+    const [leads, setLeads] = useState<Lead[]>([]);
+    const [filteredLeads, setFilteredLeads] = useState<Lead[]>([]);
+
 
     useEffect(() => {
         if (!user?._id) return;

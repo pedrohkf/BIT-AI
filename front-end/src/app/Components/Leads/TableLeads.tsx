@@ -1,5 +1,5 @@
 interface Lead {
-    id: number;
+    id: string;
     name: string;
     email: string;
     status: string;
@@ -36,10 +36,10 @@ export default function LeadsTable({ leads }: { leads: Lead[] }) {
                                 <td className="py-3 px-4">
                                     <span
                                         className={`px-2 py-1 rounded-xl text-xs font-medium ${lead.status === "Novo"
-                                                ? "bg-blue-100 text-blue-700"
-                                                : lead.status === "Em Contato"
-                                                    ? "bg-yellow-100 text-yellow-700"
-                                                    : "bg-green-100 text-green-700"
+                                            ? "bg-blue-100 text-blue-700"
+                                            : lead.status === "Em Contato"
+                                                ? "bg-yellow-100 text-yellow-700"
+                                                : "bg-green-100 text-green-700"
                                             }`}
                                     >
                                         {lead.status}
