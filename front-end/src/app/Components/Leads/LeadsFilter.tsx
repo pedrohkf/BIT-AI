@@ -3,16 +3,16 @@
 import { useState, useEffect } from "react";
 
 interface FilterProps {
-    onFilterChange: (filters: { search: string; status: string }) => void;
+    onFilterChange: (filters: { search: string; filtro: string }) => void;
 }
 
 export default function LeadsFilter({ onFilterChange }: FilterProps) {
     const [search, setSearch] = useState("");
-    const [status, setStatus] = useState("");
+    const [filtro, setFiltro] = useState("");
 
     useEffect(() => {
-        onFilterChange({ search, status });
-    }, [search, status]);
+        onFilterChange({ search, filtro});
+    }, [search, filtro]);
 
     return (
         <div className="flex flex-wrap gap-4 mb-6 items-end">
@@ -25,18 +25,16 @@ export default function LeadsFilter({ onFilterChange }: FilterProps) {
                     className="border border-gray-300 rounded-xl px-3 py-2 w-60 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
             </div>
-
             <div className="flex flex-col">
-                <label className="text-sm font-medium mb-1">Status</label>
-                <select
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    className="border border-gray-300 rounded-xl px-3 py-2 w-40 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                >
+
+                <label className="text-sm font-medium mb-1">Período</label>
+                <select value={filtro} onChange={(e) => setFiltro(e.target.value)} className="border border-gray-300 rounded-xl px-3 py-2 w-40 focus:outline-none focus:ring-2 focus:ring-blue-400">
                     <option value="">Todos</option>
-                    <option value="Novo">Novo</option>
-                    <option value="Em Contato">Em Contato</option>
-                    <option value="Convertido">Convertido</option>
+                    <option value="hoje">Hoje</option>
+                    <option value="7dias">Últimos 7 dias</option>
+                    <option value="30dias">Últimos 30 dias</option>
+                    <option value="antigo">Antigos</option>
+                    <option value="novo">Novos</option>
                 </select>
             </div>
         </div>

@@ -1,7 +1,7 @@
 export interface Lead {
-    id: string;      // ou number, dependendo do seu backend
+    id: string;   
     name: string;
     email: string;
-    status: string;
+    phone: string;
     createdAt: string;
 }

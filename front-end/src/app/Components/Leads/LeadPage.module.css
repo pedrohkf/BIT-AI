@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    background-color: var(--bg-dark);
+}
+
+.content{
+    padding: 2rem;
+    width: 80%;
+}
+
+.content h1{
+    color: var(--primary);
+}

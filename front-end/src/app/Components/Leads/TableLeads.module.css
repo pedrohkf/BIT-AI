@@ -1,0 +1,21 @@
+.container{
+    border-radius: 10px;
+    border: none;
+}
+
+.container table {
+    background-color: var(--highlight);
+    color: red;
+    font-weight: 700;
+    border-color: var(--bg);
+}
+
+.title th{
+    background-color: var(--bg-light);
+    color: var(--text-muted);
+}
+
+.container td {
+    color: var(--bg);
+    font-weight: 500;
+}
