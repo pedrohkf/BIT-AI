@@ -25,7 +25,6 @@ interface LeadCounterProps {
 export default function LeadCounter({ user }: LeadCounterProps) {
     const [leads, setLeads] = useState<Lead[]>([]);
     const [atual, setAtual] = useState(0);
-    const [anterior, setAnterior] = useState(0);
     const [diferenca, setDiferenca] = useState(0);
     const [loading, setLoading] = useState(true);
 
@@ -64,7 +63,6 @@ export default function LeadCounter({ user }: LeadCounterProps) {
         });
 
         setAtual(leadsMesAtual.length);
-        setAnterior(leadsMesAnterior.length);
         setDiferenca(leadsMesAtual.length - leadsMesAnterior.length);
     }, [leads]);
 

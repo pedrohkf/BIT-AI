@@ -4,10 +4,8 @@ import styles from './SideMenu.module.css'
 import HelpIcon from "../Icons/Help"
 import DashboardIcon from "../Icons/Dashboard"
 import IAsIcon from "../Icons/Ias";
-import TrashIcon from "../Icons/Trash";
 import LeadsIcon from "../Icons/Leads";
 import MenuIcon from "../Icons/menu";
-import Metrics from '../Icons/Metrics';
 import Exit from '../Icons/Exit';
 
 import Link from 'next/link';

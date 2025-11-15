@@ -19,7 +19,6 @@ interface LeadCounterProps {
 
 export default function LeadPotential({ user }: LeadCounterProps) {
     const [leads, setLeads] = useState<Lead[]>([]);
-    const [atual, setAtual] = useState(0);
     const [loading, setLoading] = useState(true);
     const [precoMedio, setPrecoMedio] = useState(30);
     const [receita, setReceita] = useState(30);
