@@ -11,8 +11,3 @@
     padding: 2rem;
     width: 100%;
 }
-
-.rowOne{
-    display: flex;
-    column-gap: 4rem;
-}
