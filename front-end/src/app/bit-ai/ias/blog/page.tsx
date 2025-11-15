@@ -17,8 +17,13 @@ export default async function Blog() {
             <SideMenu />
             <div className={styles.content}>
                 <h1>Meus Blogs</h1>
-                <div className={styles.newBlog}>
-                    <Link href='blog/addBlog'>+ BLOG</Link>
+                <div className={styles.menu}>
+                    <div className={styles.newBlog}>
+                        <Link href='blog/addBlog'>+ BLOG</Link>
+                    </div>
+                    <div className={styles.trash}>
+                        <Link href='blog/trash'>Lixeira</Link>
+                    </div>
                 </div>
                 <div className={styles.blogs}>
                     {data.map((blogs) => (

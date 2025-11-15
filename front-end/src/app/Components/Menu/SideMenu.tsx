@@ -18,7 +18,6 @@ const menuItems = [
     { to: "dashboard", label: "Dashboard", icon: <DashboardIcon /> },
     { to: "ias", label: "Todas as IA's", icon: <IAsIcon /> },
     { to: "leads", label: "Leads", icon: <LeadsIcon /> },
-    { to: "lixeira", label: "Lixeira", icon: <TrashIcon /> },
     { to: "help", label: "Ajuda", icon: <HelpIcon /> },
 ];
 

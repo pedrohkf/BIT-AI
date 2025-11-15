@@ -1,21 +1,52 @@
-.container{
+.container {
     border-radius: 10px;
-    border: none;
+    border-radius: 8px;
+    background-color: var(--bg);
+    border: 1px solid var(--border-muted);
+    overflow-y: auto;
+    width: 90%;
+    max-height: 70vh;
 }
 
 .container table {
-    background-color: var(--highlight);
+    width: 100%;
     color: red;
     font-weight: 700;
-    border-color: var(--bg);
+    border-collapse: collapse;
+    background-color: transparent;
 }
 
-.title th{
+.title th {
     background-color: var(--bg-light);
-    color: var(--text-muted);
+    color: var(--text);
+    font-weight: 600;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
 }
 
 .container td {
-    color: var(--bg);
-    font-weight: 500;
+    padding: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-muted);
+}
+
+.container tr:nth-child(even) {
+    background-color: color-mix(in oklch, var(--bg-dark) 80%, transparent);
+}
+
+.container tr:hover {
+    background-color: color-mix(in oklch, var(--highlight) 15%, var(--bg));
+    transition: background-color 0.2s ease;
+}
+
+.container tr:last-child td {
+    border-bottom: none;
+}
+
+.title {
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
 }

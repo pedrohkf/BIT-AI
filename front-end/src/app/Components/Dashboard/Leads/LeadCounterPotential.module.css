@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 18rem;
+    height: 13rem;
+    border-radius: 10px;
+    padding: 2.5rem;
+    color: var(--text);
+    box-shadow: inset 0 0 0 1.2px oklch(0.3 0.13 292);
+    background: radial-gradient(circle at bottom,
+            rgba(96, 43, 241, 0.534) 0%,
+            oklch(16.645% 0.06291 291.291) 50%);
+    font-family: poppins-medium;
+    font-size: 30px;
+}
+
+.containerLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+    height: 13rem;
+    border-radius: 10px;
+    padding: 3rem;
+    color: var(--text);
+    box-shadow: inset 0 0 0 1.2px oklch(0.3 0.13 292);
+    background: radial-gradient(circle at bottom,
+            rgba(96, 43, 241, 0.534) 0%,
+            oklch(16.645% 0.06291 291.291) 50%);
+
+    transition: 0.8s;
+}
+
+.subtitles {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.inlineInput {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-muted);
+    color: var(--text);
+    width: 70px;
+    font-weight: 600;
+    padding: 2px 4px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.inlineInput:focus {
+    border-bottom: 1px solid var(--primary);
+    color: var(--primary);
+}

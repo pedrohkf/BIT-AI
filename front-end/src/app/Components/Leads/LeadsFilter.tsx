@@ -8,7 +8,7 @@ interface FilterProps {
 
 export default function LeadsFilter({ onFilterChange }: FilterProps) {
     const [search, setSearch] = useState("");
-    const [filtro, setFiltro] = useState("");
+    const [filtro, setFiltro] = useState("novo");
 
     useEffect(() => {
         onFilterChange({ search, filtro});

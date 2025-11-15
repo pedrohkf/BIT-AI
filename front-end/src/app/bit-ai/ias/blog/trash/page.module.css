@@ -1,3 +1,47 @@
 .container {
     display: flex;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: var(--bg-dark);
+}
+
+.blogs {
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    padding: 2rem;
+    row-gap: 2rem;
+    column-gap: 2rem;
+    overflow-y: auto;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.boxes {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    height: 11rem;
+    border-radius: 10px;
+    justify-content: space-between;
+    border: 1px solid #4b3586;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.opacity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.726);
+    padding: 1.2rem;
+    border-radius: 10px;
+}
+
+
+.boxes p {
+    color: var(--text);
 }

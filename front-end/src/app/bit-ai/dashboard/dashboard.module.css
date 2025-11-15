@@ -1,4 +1,18 @@
-.content {
+.container {
     display: flex;
     background-color: oklch(0.1 0.065 292);
+    width: 100%;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+    padding: 2rem;
+    width: 100%;
+}
+
+.rowOne{
+    display: flex;
+    column-gap: 4rem;
 }

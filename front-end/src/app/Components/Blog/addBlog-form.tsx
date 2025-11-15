@@ -61,7 +61,7 @@ export default function AddBlog() {
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="text" placeholder="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+                <input type="text" name="text" placeholder="Tema do Blog (dinheiro, futebol)..." value={message} onChange={(e) => setMessage(e.target.value)} />
                 <FormButton loading={loading} />
             </form>
         </div>

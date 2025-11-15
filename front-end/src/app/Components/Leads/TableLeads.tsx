@@ -9,15 +9,19 @@ interface Lead {
 }
 
 export default function LeadsTable({ leads }: { leads: Lead[] }) {
+    const leadsOrdenados = [...leads].sort((a, b) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
+
 
     function formatPhone(phone: string) {
-        const apenasNumeros = phone.replace(/\D/g, ""); // tira tudo que não é número
+        const apenasNumeros = phone.replace(/\D/g, "");
         if (apenasNumeros.length === 11) {
             return `(${apenasNumeros.slice(0, 2)}) ${apenasNumeros.slice(2, 7)}-${apenasNumeros.slice(7)}`;
         } else if (apenasNumeros.length === 10) {
             return `(${apenasNumeros.slice(0, 2)}) ${apenasNumeros.slice(2, 6)}-${apenasNumeros.slice(6)}`;
         }
-        return phone; // se for fora do padrão, mostra como veio
+        return phone;
     }
 
     return (
@@ -33,14 +37,14 @@ export default function LeadsTable({ leads }: { leads: Lead[] }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {leads.length === 0 ? (
+                    {leadsOrdenados.length === 0 ? (
                         <tr>
-                            <td colSpan={3} className="text-center py-6">
+                            <td colSpan={4} className="text-center py-6">
                                 Nenhum lead encontrado.
                             </td>
                         </tr>
                     ) : (
-                        leads.map((lead) => (
+                        leadsOrdenados.map((lead) => (
                             <tr
                                 key={lead.id}
                                 className="border-t hover:bg-gray-50 transition duration-150 ease-in-out"
