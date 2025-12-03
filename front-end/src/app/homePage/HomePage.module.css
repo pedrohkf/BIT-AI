@@ -1,37 +1,49 @@
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* CENTRALIZA */
-    align-items: center;     /* CENTRALIZA */
+    justify-content: center;
+    align-items: center;
     text-align: center;
     min-height: 100vh;
     color: white;
+    background: linear-gradient(to right,
+            #0a001a 0%,
+            #1f0033 15%,
+            #4c0080 30%,
+            #8a2be2 50%,
+            #a852ff 65%,
+            #6600cc 80%,
+            #1f0033 95%,
+            #0a001a 100%);
 }
 
 .presentation {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* CENTRALIZA TUDO */
+    justify-content: center;
     min-height: 100vh;
     padding: 0 2rem;
     width: 100%;
 }
 
 .background {
-    position: absolute;
     width: 100%;
-    z-index: -1;
+    height: 100vh;
+    background-color: #9194e9;
 }
 
-/* ------------------------------- */
-/* TÍTULO */
-/* ------------------------------- */
+.background img {
+    width: 100%;
+}
+
 .title {
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* CENTRALIZA VERTICALMENTE */
-    align-items: center;      /* CENTRALIZA HORIZONTALMENTE */
+    justify-content: center;
+    /* CENTRALIZA VERTICALMENTE */
+    align-items: center;
+    /* CENTRALIZA HORIZONTALMENTE */
     row-gap: 1rem;
 
     /* Retirado o margin-top que QUEBRA TUDO */
@@ -43,20 +55,18 @@
     font-family: poppins-bold;
     font-size: 2rem;
 
-    background: linear-gradient(
-        to right,
-        #212489,
-        #5C489D,
-        #A067D2,
-        #D27EF8,
-        #DE710C,
-        #FEBA7A,
-        #DE710C,
-        #D27EF8,
-        #A067D2,
-        #5C489D,
-        #212489
-    );
+    background: linear-gradient(to right,
+            #212489,
+            #5C489D,
+            #A067D2,
+            #D27EF8,
+            #DE710C,
+            #FEBA7A,
+            #DE710C,
+            #D27EF8,
+            #A067D2,
+            #5C489D,
+            #212489);
     background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -110,9 +120,11 @@
     filter: brightness(1.1);
 }
 
-/* ------------------------------- */
-/* MEDIA QUERIES */
-/* ------------------------------- */
+.homebrew {
+    height: 100vh;
+    width: 100%;
+}
+
 
 @media (max-width: 860px) {
     .title h1 {
