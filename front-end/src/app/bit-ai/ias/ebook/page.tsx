@@ -1,9 +1,9 @@
 import FetchEbooks from '@/actions/ebook-get'
 import styles from "./ebook.module.css"
 import React from 'react'
-import SideMenu from '@/app/Components/Menu/SideMenu'
+import SideMenu from '@/components/Menu/SideMenu'
 import Link from 'next/link';
-import EbookList from '@/app/Components/Ebook/ebook-List';
+import EbookList from '@/components/Ebook/ebook-List';
 
 export const dynamic = "force-dynamic";
 

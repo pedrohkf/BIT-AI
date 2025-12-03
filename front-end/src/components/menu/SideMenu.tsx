@@ -1,16 +1,14 @@
 "use client"
-import styles from './SideMenu.module.css'
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-import HelpIcon from "../Icons/Help"
 import DashboardIcon from "../Icons/Dashboard"
 import IAsIcon from "../Icons/Ias";
 import LeadsIcon from "../Icons/Leads";
 import MenuIcon from "../Icons/menu";
 import Exit from '../Icons/Exit';
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react'
-
+import styles from './SideMenu.module.css'
 
 const menuItems = [
     { to: "dashboard", label: "Dashboard", icon: <DashboardIcon /> },

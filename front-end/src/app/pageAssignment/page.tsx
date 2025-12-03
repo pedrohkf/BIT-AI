@@ -1,5 +1,5 @@
 import styles from "./page.module.css"
-import PlanList from "../Components/PlanList/PlanList"
+import PlanList from "../../components/PlanList/PlanList"
 
 export default function page() {
     return (

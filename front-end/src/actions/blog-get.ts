@@ -1,4 +1,3 @@
-"use server";
 import axios from "axios";
 import userGet from "./user-get";
 
@@ -26,9 +25,12 @@ export default async function FetchBlogs() {
         throw new Error("User not found or user ID is undefined");
     }
 
-    const response = await axios.get(`https://bit-ai-orcin.vercel.app/blogs/${idUser._id}`)
-
-    const data = response.data as Blog[]
+    const response = await fetch(`https://bit-ai-orcin.vercel.app/blogs/${idUser._id}`, {
+        next: {
+            revalidate: 10,
+        }
+    })
+    const data = await response.json() as Blog[]
 
     return data
 }

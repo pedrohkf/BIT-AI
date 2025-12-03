@@ -7,8 +7,8 @@ import { Lead } from "@/types/lead";
 
 import styles from "./LeadCounterMonth.module.css"
 
-import ArrowUp from "../../../../../public/imgs/arrow-up";
-import ArrowDown from "../../../../../public/imgs/arrow-down";
+import ArrowUp from "../../../public/imgs/arrow-up";
+import ArrowDown from "../../../public/imgs/arrow-down";
 
 
 

@@ -1,5 +1,5 @@
 "use client"
-import Button from '@/app/Components/forms/button';
+import Button from '@/components/forms/button';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import userGet from "@/actions/user-get";

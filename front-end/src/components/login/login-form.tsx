@@ -1,11 +1,11 @@
 'use client';
 import login from "@/actions/login";
-import Button from "@/app/Components/forms/button";
+import Button from "@/components/forms/button";
 import styles from "./login-form.module.css"
 import { useFormStatus } from "react-dom";
 import { redirect } from "next/navigation";
 import { useState } from "react";
-import logo from "../../../../public/imgs/logo-black.png"
+import logo from "@/public/imgs/logo-black.png"
 import Image from "next/image";
 
 function FormButton() {

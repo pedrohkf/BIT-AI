@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import LoginForm from "../Components/login/login-form";
-import RegisterForm from "../Components/Register/register-form";
+import LoginForm from "../../components/login/login-form";
+import RegisterForm from "../../components/Register/register-form";
 import styles from "./Auth.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 

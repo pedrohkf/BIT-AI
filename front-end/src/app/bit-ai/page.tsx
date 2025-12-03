@@ -1,4 +1,4 @@
-import SideMenu from "../Components/Menu/SideMenu";
+import SideMenu from "../../components/Menu/SideMenu";
 
 export default function BitAi() {
 

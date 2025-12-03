@@ -5,7 +5,7 @@ import LeadsFilter from "./LeadsFilter";
 import LeadsTable from "./TableLeads";
 
 import { Lead } from "@/types/lead";
-import SideMenu from "../Menu/SideMenu";
+import SideMenu from "../menu/SideMenu";
 
 import styles from "./LeadPage.module.css"
 

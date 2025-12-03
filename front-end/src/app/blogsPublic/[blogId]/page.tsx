@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FetchBlogs from "@/actions/blog-get";
 
-import Modal from "../../Components/Modal/modal";
+import Modal from "../../../components/Modal/modal";
 
 export default function Page() {
   const params = useParams();

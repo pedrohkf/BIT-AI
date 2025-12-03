@@ -1,4 +1,4 @@
-import SideMenu from '@/app/Components/Menu/SideMenu'
+import SideMenu from '@/components/Menu/SideMenu'
 import React from 'react'
 
 import styles from "./page.module.css"

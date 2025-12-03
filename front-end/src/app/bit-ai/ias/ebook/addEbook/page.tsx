@@ -1,4 +1,4 @@
-import AddEbook from '@/app/Components/Ebook/addEbook-form'
+import AddEbook from '@/components/Ebook/addEbook-form'
 import React from 'react'
 
 export default function addEbook() {

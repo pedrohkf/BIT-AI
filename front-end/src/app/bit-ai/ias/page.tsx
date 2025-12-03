@@ -1,5 +1,5 @@
 import styles from "./ias.module.css"
-import SideMenu from '../../Components/Menu/SideMenu';
+import SideMenu from "@/components/Menu/SideMenu";
 import FetchIAs from '@/actions/ias-get';
 import Link from "next/link";
 

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React from 'react'
 import { useRouter } from "next/navigation";
-import DeleteIcon from "@/app/Components/Icons/Delete"
+import DeleteIcon from "@/components/Icons/Delete"
 import styles from "./DeleteBlogButton.module.css"
 
 type Props = {

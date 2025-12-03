@@ -1,6 +1,6 @@
 import userGet from '@/actions/user-get';
-import SideMenu from '@/app/Components/Menu/SideMenu';
-import DashboardClientWrapper from '@/app/Components/Dashboard/DashBoardClientWrapper';
+import SideMenu from '@/components/Menu/SideMenu';
+import DashboardClientWrapper from '@/components/Dashboard/DashBoardClientWrapper';
 import styles from "./dashboard.module.css"
 
 export default async function Page() {

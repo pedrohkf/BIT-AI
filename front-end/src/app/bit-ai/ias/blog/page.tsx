@@ -1,11 +1,11 @@
 import styles from "./page.module.css"
-import SideMenu from "@/app/Components/Menu/SideMenu";
+import SideMenu from "@/components/Menu/SideMenu";
 import FetchBlogs from '@/actions/blog-get';
-import RedirectPageIcon from '@/app/Components/Icons/RedirectPage';
-import LinkIcon from '@/app/Components/Icons/Link';
+import RedirectPageIcon from '@/components/Icons/RedirectPage';
+import LinkIcon from '@/components/Icons/Link';
 import Link from 'next/link';
-import DeleteBlogButton from "@/app/Components/Blog/DeleteBlogButton";
-import Edit from "public/imgs/edit";
+import DeleteBlogButton from "@/components/Blog/DeleteBlogButton";
+import Edit from "@/public/imgs/edit";
 
 export const dynamic = "force-dynamic";
 
