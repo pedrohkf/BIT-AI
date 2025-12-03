@@ -16,7 +16,6 @@ const menuItems = [
     { to: "dashboard", label: "Dashboard", icon: <DashboardIcon /> },
     { to: "ias", label: "Todas as IA's", icon: <IAsIcon /> },
     { to: "leads", label: "Leads", icon: <LeadsIcon /> },
-    { to: "help", label: "Ajuda", icon: <HelpIcon /> },
 ];
 
 export default function SideMenu() {

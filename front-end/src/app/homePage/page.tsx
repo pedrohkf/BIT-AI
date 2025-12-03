@@ -9,16 +9,10 @@ export default function HomePage() {
             <Menu />
             <div className={styles.container}>
                 <div className={styles.presentation}>
-                    <video
-                        className={styles.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                    >
-                        <source src="/videos/video.webm" type="video/webm" />
+                    <div className={styles.background}>
+                        <img src="/imgs/background.png" alt="background" />
                         Seu navegador não suporta vídeo em background.
-                    </video>
+                    </div>
                     <div>
                         <div className={styles.title}>
                             <img src="/imgs/logo-black.png" alt="" />

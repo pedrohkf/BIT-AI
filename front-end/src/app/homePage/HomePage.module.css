@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     text-align: center;
     height: 100%;
     color: white;
@@ -12,13 +11,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     height: 100vh;
     width: 100%;
     padding: 0 15% 0 15%;
 }
 
-.video {
+.background {
     position: absolute;
     width: 100%;
     z-index: -1;
@@ -30,17 +29,24 @@
     justify-content: center;
     align-items: center;
     row-gap: 1.5rem;
+    margin-top: 30%;
 }
 
 .title h1 {
     font-family: poppins-bold;
     font-size: 40px;
-    background: linear-gradient(to right, #170046, #6A41FF, #C27CFF, #C27CFF, #170046);
+    background: linear-gradient(to right, #212489, #5C489D, #A067D2, #D27EF8, #DE710C, #FEBA7A, #DE710C, #D27EF8, #A067D2, #5C489D, #212489);
     background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    /* animation: animate-gradient 10s linear infinite; */
+    animation: animate-gradient 15s linear infinite;
+}
+
+@keyframes animate-gradient {
+    to {
+        background-position: 200%;
+    }
 }
 
 .title img {
@@ -53,7 +59,7 @@
     width: 100%;
     font-size: 18px;
     line-height: 30px;
-    color: black;
+    color: rgb(230, 228, 228);
 }
 
 .title p {
@@ -62,6 +68,15 @@
     letter-spacing: 3px;
     line-height: 27px;
     font-family: poppins-medium;
+}
+
+.title button{
+    background-color: #FEBA7A;
+    width: 12rem;
+    height: 2.5rem;
+    border-radius: 20px;
+    color: #212489;
+    font-weight: 600;
 }
 
 @keyframes animate-gradient {
