@@ -14,10 +14,9 @@ export default function HomePage() {
             <div className={styles.container}>
                 <div className={styles.presentation}>
                     <div className={styles.background}>
-                        <Image src={background} alt="background" width={2000} height={2000} />
-                        Seu navegador não suporta vídeo em background.
+                        <Image src={background} alt="" fill priority sizes="100vw" />
                     </div>
-                    <div>
+                    <div className={styles.hero}>
                         <div className={styles.title}>
                             <Image src={logoBlack} alt="" width={100} height={200} />
                             <h1>Automatizando o seu futuro</h1>
@@ -27,9 +26,6 @@ export default function HomePage() {
                             <a href="/auth"><button>QUERO CRIAR</button></a>
                         </div>
                     </div>
-                </div>
-                <div className={styles.homebrew}>
-
                 </div>
             </div>
         </div >
