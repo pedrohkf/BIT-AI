@@ -1,5 +1,6 @@
 "use client"
-import FetchEbookById, { Ebook } from "@/actions/ebookId-get"
+import { getEbook } from "@/services/ebooks"
+import { Ebook } from "@/types/models"
 import styles from './Ebook.module.css'
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,25 +37,19 @@ export default function Page() {
     }
 
     useEffect(() => {
-        async function fetchEbook() {
-            const data = await FetchEbookById(ebookId);
-            setEbook(data);
+        const data = getEbook(ebookId);
+        setEbook(data);
 
-            const date = data?.createdAt ? new Date(data.createdAt) : null;
+        const date = data?.createdAt ? new Date(data.createdAt) : null;
 
+        const formattedDate = new Intl.DateTimeFormat("pt-BR", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+            timeZone: "America/Sao_Paulo",
+        }).format(date ?? new Date());
 
-            const formattedDate = new Intl.DateTimeFormat("pt-BR", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-                timeZone: "America/Sao_Paulo",
-            }).format(date ?? new Date());
-
-
-            setDateEbook(formattedDate)
-        }
-
-        fetchEbook()
+        setDateEbook(formattedDate)
     }, [ebookId])
 
     // const formattedIntroductoryText: HTMLContent = { __html: (ebook?.introductoryText || "").replace(/\.\s/g, ".<br/> <br/>") }
