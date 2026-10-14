@@ -1,32 +1,50 @@
-'use client'
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 import styles from "./HomePage.module.css"
 import { Menu } from '@/components/menu/Menu'
-import Image from 'next/image'
 
 import background from "../../public/imgs/background.png"
-import logoBlack from "../../public/imgs/logo-black.png"
+
+const highlights = ["Blogs com IA", "Ebooks em PDF", "Captura de leads"]
 
 export default function HomePage() {
     return (
         <div className={styles.content}>
             <Menu />
             <div className={styles.container}>
-                <div className={styles.presentation}>
+                <section className={styles.presentation}>
                     <div className={styles.background}>
                         <Image src={background} alt="" fill priority sizes="100vw" />
                     </div>
+                    <div className={styles.shade} />
+                    <div className={styles.grid} />
+
                     <div className={styles.hero}>
-                        <div className={styles.title}>
-                            <Image src={logoBlack} alt="" width={100} height={200} />
-                            <h1>Automatizando o seu futuro</h1>
-                            <h2>
-                                Crie campanhas, sites e funis automatizados com rapidez, economia e eficiência.
-                            </h2>
-                            <a href="/auth"><button>QUERO CRIAR</button></a>
+                        <span className={styles.badge}>
+                            <i /> Inteligência artificial para criar e converter
+                        </span>
+
+                        <h1>
+                            Automatizando <span>o seu futuro</span>
+                        </h1>
+
+                        <p className={styles.subtitle}>
+                            Crie campanhas, sites e funis automatizados com rapidez, economia e eficiência.
+                        </p>
+
+                        <div className={styles.actions}>
+                            <Link href="/auth" className={styles.cta}>QUERO CRIAR</Link>
+                            <Link href="/auth" className={styles.ghost}>Já tenho conta</Link>
                         </div>
+
+                        <ul className={styles.highlights}>
+                            {highlights.map((item) => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul>
                     </div>
-                </div>
+                </section>
             </div>
         </div >
     )

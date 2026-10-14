@@ -1,19 +1,20 @@
 import React from 'react'
-import { ButtonRedirectPage } from '../Buttons/ButtonRedirectPage'
+import Link from 'next/link'
 import styles from "./Menu.module.css"
-import logo from "@/public/imgs/logo-black.png"
+import logo from "@/public/icons/bit-logo.png"
 import Image from 'next/image'
 
 export const Menu = () => {
   return (
-    <div className={styles.menu}>
+    <header className={styles.menu}>
       <div className={styles.logo}>
-        <Image src={logo} alt='logo' />
+        <Image src={logo} alt='BIT.AI' />
+        <span>BIT.AI</span>
       </div>
       <div className={styles.buttons}>
-        <ButtonRedirectPage pageRedirect="/auth">Entrar</ButtonRedirectPage>
-        <ButtonRedirectPage pageRedirect="/auth">Começar</ButtonRedirectPage>
+        <Link href="/auth" className={styles.login}>Entrar</Link>
+        <Link href="/auth" className={styles.start}>Começar</Link>
       </div>
-    </div>
+    </header>
   )
 }
