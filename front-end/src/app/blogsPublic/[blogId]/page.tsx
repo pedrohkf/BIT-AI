@@ -1,52 +1,46 @@
 "use client"
-import FetchBlogsById, { Blog } from "@/actions/blogId-get"
+import { getBlog, listBlogs } from "@/services/blogs"
+import { Blog } from "@/types/models"
 import styles from './Blog.module.css'
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import FetchBlogs from "@/actions/blog-get";
 
 import Modal from "../../../components/Modal/modal";
+
+function formatDate(value?: string) {
+  return new Intl.DateTimeFormat("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Sao_Paulo",
+  }).format(value ? new Date(value) : new Date());
+}
 
 export default function Page() {
   const params = useParams();
   const blogId = params.blogId as string;
 
   const [blog, setBlog] = useState<Blog | null>(null);
+  const [loaded, setLoaded] = useState(false);
   const [blogsUser, setBlogsUser] = useState<Blog[]>([])
-  const [dateBlog, setDateBlog] = useState<string>()
 
   useEffect(() => {
-    async function fetchBlog() {
-      const data = await FetchBlogsById(blogId);
+    const data = getBlog(blogId);
 
-      setBlog(data);
-
-      const date = data?.createadAt ? new Date(data.createadAt) : null;
-
-
-      const formattedDate = new Intl.DateTimeFormat("pt-BR", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-        timeZone: "America/Sao_Paulo",
-      }).format(date ?? new Date());
-
-
-      setDateBlog(formattedDate)
-    }
-
-    async function fetchAllBlogs() {
-      const data = await FetchBlogs();
-      setBlogsUser(data);
-    }
-
-    fetchBlog()
-    fetchAllBlogs()
+    setBlog(data);
+    setBlogsUser(data ? listBlogs(data.user).filter((b) => b._id !== data._id) : []);
+    setLoaded(true);
   }, [blogId])
+
+  const dateBlog = formatDate(blog?.createdAt);
+
+  if (loaded && (!blog || blog.deleted)) {
+    return <div className={styles.container}><p>Blog não encontrado.</p></div>
+  }
 
   return (
     <div className={styles.container}>
-      <Modal />
+      {blog && <Modal ownerId={blog.user} />}
       <div className={styles.content}>
         {blog?.img?.length ? (
           <div className={styles.banner} style={{ backgroundImage: `url(${blog.img[5]})` }}>
@@ -77,12 +71,12 @@ export default function Page() {
       <div className={styles.allBlogs}>
         <h5>Recomendados para você</h5>
         {blogsUser.slice(0, 4).map((blog) => (
-          <a key={blog._id} href={blog._id} className={styles.link}>
+          <a key={blog._id} href={`/blogsPublic/${blog._id}`} className={styles.link}>
             <div className={styles.blogUserSection}>
               <div className={styles.blogUserBoxes}>
                 <div className={styles.blogUser}>
                   <h4>{blog.title}</h4>
-                  <p>{dateBlog}</p>
+                  <p>{formatDate(blog.createdAt)}</p>
                 </div>
                 <div>
                   <img

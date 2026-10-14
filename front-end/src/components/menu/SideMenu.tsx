@@ -1,5 +1,6 @@
 "use client"
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import DashboardIcon from "../Icons/Dashboard"
@@ -7,6 +8,8 @@ import IAsIcon from "../Icons/Ias";
 import LeadsIcon from "../Icons/Leads";
 import MenuIcon from "../Icons/menu";
 import Exit from '../Icons/Exit';
+
+import { logout } from '@/services/auth';
 
 import styles from './SideMenu.module.css'
 
@@ -17,6 +20,7 @@ const menuItems = [
 ];
 
 export default function SideMenu() {
+    const router = useRouter();
     const [activeLink, setActiveLink] = useState<string>("/dashboard");
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -29,6 +33,11 @@ export default function SideMenu() {
         return () => window.removeEventListener("resize", checkScreenSize);
     }, [])
 
+
+    const handleLogout = () => {
+        logout();
+        router.push('/auth');
+    };
 
     const handleClick = (event: React.MouseEvent<HTMLLIElement>) => {
         event.preventDefault()
@@ -63,7 +72,7 @@ export default function SideMenu() {
                         </li>
                     ))}
                 </ul>
-                <ul className={styles.exit}>
+                <ul className={styles.exit} onClick={handleLogout} style={{ cursor: 'pointer' }}>
                     <Exit />
                     <li>Sair</li>
                 </ul>

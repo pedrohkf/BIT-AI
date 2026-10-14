@@ -1,4 +1,4 @@
-import { Ebook } from '@/actions/ebook-get'
+import { Ebook } from '@/types/models'
 import styles from "./ebook-List.module.css"
 import React from 'react'
 
@@ -18,7 +18,7 @@ export default function EbookList({ ebooks }: Props) {
     return (
         <div className={styles.ebooks}>
             {ebooks.map((ebook) => (
-                <a key={ebook._id} href={'../../ebooksPublic/' + ebook._id}>
+                <a key={ebook._id} href={'/ebooksPublic/' + ebook._id}>
                     <div className={styles.ebookCard}>
                         <div className={styles.description}>
                             <h3>{ebook.title}</h3>

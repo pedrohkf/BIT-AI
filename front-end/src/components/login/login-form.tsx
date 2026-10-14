@@ -1,9 +1,9 @@
 'use client';
-import login from "@/actions/login";
+import { login } from "@/services/auth";
 import Button from "@/components/forms/button";
 import styles from "./login-form.module.css"
 import { useFormStatus } from "react-dom";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import logo from "@/public/imgs/logo-black.png"
 import Image from "next/image";
@@ -23,6 +23,7 @@ function FormButton() {
 }
 
 export default function LoginForm({ onSwitch }: { onSwitch: () => void }) {
+    const router = useRouter();
     const [error, setError] = useState<string>();
 
     const handleSubmit = async (formData: FormData) => {
@@ -41,9 +42,14 @@ export default function LoginForm({ onSwitch }: { onSwitch: () => void }) {
             return
         }
 
-        await login(formData);
+        const result = await login(email, password);
 
-        redirect('/bit-ai/dashboard')
+        if (!result.success) {
+            setError(result.message);
+            return
+        }
+
+        router.push('/bit-ai/dashboard')
     }
 
     return (
@@ -54,8 +60,8 @@ export default function LoginForm({ onSwitch }: { onSwitch: () => void }) {
             </div>
 
             <div className={styles.selection}>
-                <button className={styles.btnActived}>Entrar</button>
-                <button onClick={onSwitch}>Cadastrar</button>
+                <button type="button" className={styles.btnActived}>Entrar</button>
+                <button type="button" onClick={onSwitch}>Cadastrar</button>
             </div>
             <div className={styles.inputs}>
                 <div>

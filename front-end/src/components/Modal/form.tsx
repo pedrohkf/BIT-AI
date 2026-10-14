@@ -1,13 +1,13 @@
 "use client"
 import Button from '@/components/forms/button';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import userGet from "@/actions/user-get";
+import { useState } from 'react';
+import { addLead } from "@/services/leads";
 
 import styles from "./form.module.css"
 
 interface AddLeadProps {
   onClose: () => void;
+  ownerId: string;
 }
 
 function FormButton({ loading }: { loading: boolean }) {
@@ -18,37 +18,23 @@ function FormButton({ loading }: { loading: boolean }) {
   );
 }
 
-export default function AddLead({ onClose }: AddLeadProps) {
-    const [userId, setUserId] = useState<string | null>(null)
+export default function AddLead({ onClose, ownerId }: AddLeadProps) {
     const [name, setName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [phone, setPhone] = useState<string>('')
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        async function fetchUser() {
-            const User = await userGet();
-            setUserId(User?._id ?? null);
-        }
-
-        fetchUser();
-    }, [])
-
-    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-        console.log("Formulário enviado");
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        if (loading) return;
+        if (loading || !name.trim() || !email.trim() || !phone.trim()) return;
         setLoading(true);
-        try {
-            const response = await axios.post(`https://bit-ai-orcin.vercel.app/lead/add`, { name, email, phone, source: "blog", userId });
-            return response
-        } catch (error) {
-            console.error("Erro ao enviar Lead", error)
-        } finally {
-            setLoading(false);
-            onClose();
-        }
+
+        // o lead pertence ao dono do blog, não a quem está lendo
+        addLead({ name, email, phone, source: "blog", userId: ownerId });
+
+        setLoading(false);
+        onClose();
     }
 
     return (
@@ -70,7 +56,7 @@ export default function AddLead({ onClose }: AddLeadProps) {
                     </div>
                 </div>
                 <FormButton loading={loading} />
-                <button onClick={onClose}>Não tenho interesse</button>
+                <button type="button" onClick={onClose}>Não tenho interesse</button>
             </form>
         </>
     )

@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import LeadsFilter from "./LeadsFilter";
 import LeadsTable from "./TableLeads";
 
-import { Lead } from "@/types/lead";
+import { Lead } from "@/types/models";
+import { listLeads } from "@/services/leads";
 import SideMenu from "../menu/SideMenu";
 
 import styles from "./LeadPage.module.css"
@@ -28,12 +29,9 @@ export default function LeadsPage({ user }: LeadsPageProps) {
     useEffect(() => {
         if (!user?._id) return;
 
-        fetch(`https://bit-ai-orcin.vercel.app/lead/${user._id}`)
-            .then(res => res.json())
-            .then(data => {
-                setLeads(data);
-                setFilteredLeads(data);
-            });
+        const data = listLeads(user._id);
+        setLeads(data);
+        setFilteredLeads(data);
 
     }, [user]);
 
