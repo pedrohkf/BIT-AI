@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const SvgIcon: React.FC<React.SVGProps<SVGElement>> = (props) => (
+const SvgIcon: React.FC<React.SVGProps<SVGElement>> = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     className='si-glyph si-glyph-triangle-down'
