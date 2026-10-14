@@ -96,21 +96,18 @@
 
 .hero h1 {
     margin-top: 1.6rem;
+    max-width: 100%;
     font-family: poppins-bold;
-    font-size: clamp(2.4rem, 7vw, 4.8rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    text-wrap: balance;
-    text-shadow: 0 4px 40px rgba(6, 3, 15, 0.6);
-}
-
-.hero h1 span {
-    background: linear-gradient(100deg, #b69cff 0%, #f08bff 35%, #febA7A 70%, #b69cff 100%);
+    font-size: clamp(1.3rem, 5.6vw, 3.2rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    background: linear-gradient(100deg, #b69cff 0%, #f08bff 30%, #febA7A 55%, #f08bff 80%, #b69cff 100%);
     background-size: 200% auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shine 8s linear infinite;
+    animation: shine 6s linear infinite;
 }
 
 .subtitle {
@@ -230,7 +227,7 @@
 @media (prefers-reduced-motion: reduce) {
 
     .hero,
-    .hero h1 span,
+    .hero h1,
     .badge i {
         animation: none;
     }

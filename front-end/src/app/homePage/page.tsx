@@ -25,9 +25,7 @@ export default function HomePage() {
                             <i /> Inteligência artificial para criar e converter
                         </span>
 
-                        <h1>
-                            Automatizando <span>o seu futuro</span>
-                        </h1>
+                        <h1>Automatizando o seu futuro</h1>
 
                         <p className={styles.subtitle}>
                             Crie campanhas, sites e funis automatizados com rapidez, economia e eficiência.
