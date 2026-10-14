@@ -1,16 +1,18 @@
-import userGet from '@/actions/user-get';
-import SideMenu from '@/components/Menu/SideMenu';
+"use client";
+
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+import SideMenu from '@/components/menu/SideMenu';
 import DashboardClientWrapper from '@/components/Dashboard/DashBoardClientWrapper';
 import styles from "./dashboard.module.css"
 
-export default async function Page() {
-  const user = await userGet();
+export default function Page() {
+  const { user, loading } = useCurrentUser();
 
   return (
     <div className={styles.container}>
       <SideMenu />
       <div className={styles.content}>
-        <DashboardClientWrapper user={user} />
+        {!loading && <DashboardClientWrapper user={user} />}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Ring } from 'ldrs/react'
 import 'ldrs/react/Ring.css'
-import { Lead } from "@/types/lead";
+import { useLeads } from "@/hooks/useLeads";
 
 import styles from "./LeadCounterMonth.module.css"
 
@@ -23,19 +23,9 @@ interface LeadCounterProps {
 }
 
 export default function LeadCounter({ user }: LeadCounterProps) {
-    const [leads, setLeads] = useState<Lead[]>([]);
+    const { leads, loading } = useLeads(user?._id);
     const [atual, setAtual] = useState(0);
     const [diferenca, setDiferenca] = useState(0);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setLoading(true);
-
-        fetch(`https://bit-ai-orcin.vercel.app/lead/${user?._id}`)
-            .then(r => r.json())
-            .then(data => setLeads(data))
-            .finally(() => setLoading(false));
-    }, []);
 
     useEffect(() => {
         if (!leads.length) return;

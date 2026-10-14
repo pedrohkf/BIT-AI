@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLeads } from "@/hooks/useLeads";
 import LeadsTable from "../Leads/TableLeads";
 
 import styles from "./DashboardClient.module.css"
@@ -16,17 +16,7 @@ interface LeadsPageProps {
 }
 
 export default function DashboardClient({ user }: LeadsPageProps) {
-    const [filteredLeads, setFilteredLeads] = useState([]);
-
-    useEffect(() => {
-        if (!user?._id) return;
-
-        fetch(`https://bit-ai-orcin.vercel.app/lead/${user._id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setFilteredLeads(data);
-            });
-    }, [user]);
+    const { leads: filteredLeads } = useLeads(user?._id);
 
     return (
         <div className={styles.content}>
