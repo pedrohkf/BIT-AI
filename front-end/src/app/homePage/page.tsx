@@ -21,9 +21,6 @@ export default function HomePage() {
                     <div className={styles.grid} />
 
                     <div className={styles.hero}>
-                        <span className={styles.badge}>
-                            <i /> Inteligência artificial para criar e converter
-                        </span>
 
                         <h1>Automatizando o seu futuro</h1>
 

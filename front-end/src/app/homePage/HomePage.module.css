@@ -71,29 +71,6 @@
     animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.45rem 1rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px);
-    font-family: poppins-medium;
-    font-size: 0.8rem;
-    color: #e4dcff;
-}
-
-.badge i {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: #febA7A;
-    box-shadow: 0 0 0 0 rgba(254, 186, 122, 0.7);
-    animation: pulse 2s infinite;
-}
-
 .hero h1 {
     margin-top: 1.6rem;
     max-width: 100%;
@@ -198,16 +175,6 @@
     }
 }
 
-@keyframes pulse {
-    70% {
-        box-shadow: 0 0 0 10px rgba(254, 186, 122, 0);
-    }
-
-    100% {
-        box-shadow: 0 0 0 0 rgba(254, 186, 122, 0);
-    }
-}
-
 @media (max-width: 520px) {
     .presentation {
         padding: 3rem 1.25rem 5rem;
@@ -227,8 +194,7 @@
 @media (prefers-reduced-motion: reduce) {
 
     .hero,
-    .hero h1,
-    .badge i {
+    .hero h1 {
         animation: none;
     }
 }
