@@ -1,26 +1,18 @@
 "use client"
-import axios from 'axios';
 import React from 'react'
-import { useRouter } from "next/navigation";
 import DeleteIcon from "@/components/Icons/Delete"
+import { trashBlog } from "@/services/blogs";
 import styles from "./DeleteBlogButton.module.css"
 
 type Props = {
     blogId: string;
+    onDeleted: () => void;
 };
 
-export default function DeleteBlogButton({ blogId }: Props) {
-    const router = useRouter();
-
-    async function deleteBlog() {
-        try {
-            await axios.patch(`https://bit-ai-orcin.vercel.app/blogs/${blogId}`);
-            router.refresh()
-        } catch (error) {
-            console.error(error);
-            alert(`https://bit-ai-orcin.vercel.app/blogs/${blogId}`)
-            alert("Erro ao deltar o blog")
-        }
+export default function DeleteBlogButton({ blogId, onDeleted }: Props) {
+    function deleteBlog() {
+        trashBlog(blogId);
+        onDeleted();
     }
 
     return (

@@ -3,30 +3,10 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import styles from "./edit.module.css";
-import userGet from "@/actions/user-get";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { getBlog, updateBlog } from "@/services/blogs";
+import { Blog } from "@/types/models";
 import Image from "next/image";
-
-interface Blog {
-  title: string,
-  subTitle: string,
-  complementTitle: string,
-  catchyPhrase: string,
-  introductoryText: string,
-  developmentText: string,
-  conclusion: string,
-  img: [string],
-  writerName: string,
-  createdAt: Date,
-  deleted: boolean,
-  deletedAt: string,
-  userId: string,
-}
-
-interface User {
-  _id: string;
-  name: string;
-  email: string;
-}
 
 
 export default function EditPage() {
@@ -43,43 +23,25 @@ export default function EditPage() {
   const [conclusion, setConclusion] = useState("");
   const [img, setImg] = useState<string[]>([]);
 
-  const [user, setUser] = useState<User | null>(null);
+  const { user } = useCurrentUser();
 
   useEffect(() => {
-    async function fetchUser() {
-      const userData = await userGet();
-      console.log("USER ID" + user?._id)
-
-      setUser(userData ?? null);
-    }
-    fetchUser();
-  }, []);
-
-
-  useEffect(() => {
-    console.log("BLOGS ID " + blogId)
     if (!blogId) return;
 
-    async function fetchBlog() {
-      const res = await fetch(`https://bit-ai-orcin.vercel.app/blogs/get/${blogId}`);
-      const data = await res.json();
+    const data = getBlog(blogId as string);
+    if (!data) return;
 
-      console.log("Pizzaria carregada do backend:", data);
-
-      setBlog(data);
-      setTitle(data.title);
-      setSubTitle(data.subTitle);
-      setCatchyPhrase(data.catchyPhrase);
-      setIntroductoryText(data.introductoryText);
-      setDevelopmentText(data.developmentText);
-      setConclusion(data.conclusion);
-      setImg(data.img || []);
-
-    }
-    fetchBlog();
+    setBlog(data);
+    setTitle(data.title);
+    setSubTitle(data.subTitle);
+    setCatchyPhrase(data.catchyPhrase);
+    setIntroductoryText(data.introductoryText);
+    setDevelopmentText(data.developmentText);
+    setConclusion(data.conclusion);
+    setImg(data.img || []);
   }, [blogId]);
 
-  async function handleSave() {
+  function handleSave() {
     if (!blog) return;
 
     if (!title.trim()) {
@@ -113,25 +75,9 @@ export default function EditPage() {
     };
 
 
-    try {
-      const res = await fetch(`https://bit-ai-orcin.vercel.app/blogs/update/${blogId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updated),
-      });
-
-      if (res.ok) {
-        alert("blog atualizada com sucesso!");
-        router.refresh();
-      } else {
-        const errText = await res.text();
-        console.error("Erro no backend:", errText);
-        alert("Erro ao salvar. Verifique o console.");
-      }
-    } catch (err) {
-      console.error("Erro ao atualizar blog:", err);
-      alert("Erro de conexão ao salvar.");
-    }
+    updateBlog(blogId as string, updated);
+    alert("Blog atualizado com sucesso!");
+    router.push("/bit-ai/ias/blog");
   }
 
   return (
@@ -183,7 +129,7 @@ export default function EditPage() {
         </header>
 
         {/* IMAGEM DE CAPA */}
-        {img.length > 0 && (
+        {img[0] && (
           <div className={styles.bannerWrapper}>
             <Image src={img[0]} alt="Imagem de capa"
               className={styles.banner}
@@ -211,11 +157,11 @@ export default function EditPage() {
         </article>
 
         {/* GALERIA DE IMAGENS */}
-        {img.length > 1 && (
+        {img.slice(1).some(Boolean) && (
           <section id="galeria" className={styles.gallerySection}>
             <h2>Galeria</h2>
             <div className={styles.galleryGrid}>
-              {img.slice(1).map((url, i) => (
+              {img.slice(1).filter(Boolean).map((url, i) => (
                 <div className={styles.galleryItem} key={i}>
                   <Image src={url} alt={`Imagem ${i}`} width={600}
                     height={400} />

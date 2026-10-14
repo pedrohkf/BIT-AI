@@ -1,25 +1,48 @@
-import SideMenu from '@/components/Menu/SideMenu'
-import React from 'react'
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import SideMenu from '@/components/menu/SideMenu'
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { deleteBlogForever, listTrashedBlogs, restoreBlog } from "@/services/blogs";
+import { Blog } from "@/types/models";
 
 import styles from "./page.module.css"
-import DeletedBlogs from '@/actions/blogsTrash-get'
 
-export const dynamic = 'force-dynamic';
+export default function Page() {
+    const { user } = useCurrentUser();
+    const [data, setData] = useState<Blog[]>([]);
 
-export default async function page() {
-    const data = await DeletedBlogs();
+    const refresh = useCallback(() => {
+        if (user) setData(listTrashedBlogs(user._id));
+    }, [user]);
+
+    useEffect(() => {
+        refresh();
+    }, [refresh]);
+
+    function handleRestore(blogId: string) {
+        restoreBlog(blogId);
+        refresh();
+    }
+
+    function handleDelete(blogId: string) {
+        if (!window.confirm("Excluir definitivamente este blog?")) return;
+        deleteBlogForever(blogId);
+        refresh();
+    }
 
     return (
         <div className={styles.container}>
             <SideMenu />
             <div className={styles.blogs}>
+                {data.length === 0 && <p>A lixeira está vazia.</p>}
                 {data.map((blogs) => (
                     <div key={blogs._id}>
-                        <div className={styles.boxes} style={{ backgroundImage: `url(${blogs.img[0]})` }}>
-                            <div className={styles.opacity}>
-                                <p>{blogs.title}</p>
-                                <div className={styles.buttons}>
-                                </div>
+                        <div className={styles.boxes}>
+                            {blogs.title}
+                            <div className={styles.buttons}>
+                                <p onClick={() => handleRestore(blogs._id)} style={{ cursor: 'pointer' }}>Restaurar</p>
+                                <p onClick={() => handleDelete(blogs._id)} style={{ cursor: 'pointer' }}>Excluir</p>
                             </div>
                         </div>
                     </div>
